@@ -28,6 +28,6 @@ module.exports = (sequelize, DataTypes) => {
            validate: {
                len:[10, 300]
            }
-       }
+        }
     });
    }

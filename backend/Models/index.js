@@ -1,3 +1,4 @@
+const { userInfo } = require('node:os')
 const Sequelize = require('sequelize')
 const dbConfig = require('../Database/db-config')
 
@@ -10,14 +11,24 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.dbUser, dbConfig.dbP
 const Anunt = require('./anunt')(sequelize, Sequelize)
 const Campanie = require('./campanie')(sequelize, Sequelize)
 const Donatie = require('./donatie')(sequelize, Sequelize)
-const DonatieCampanie = require('./donatieCampanie')(sequelize, Sequelize)
 const Mesaj = require('./mesaj')(sequelize, Sequelize)
 const Obiect = require('./obiect')(sequelize, Sequelize)
 const Utilizator = require('./utilizator')(sequelize, Sequelize)
 
 /* Constraints START */
+Anunt.belongsTo(Utilizator)
+Utilizator.hasMany(Anunt)
+Obiect.belongsTo(Anunt)
+Anunt.hasMany(Mesaj, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
+Utilizator.hasMany(Mesaj, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
+
+Campanie.belongsTo(Utilizator)
+Utilizator.hasMany(Campanie)
+Campanie.hasMany(Donatie, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
+Utilizator.hasMany(Donatie, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
 
 /* Constraints END */
+
 /**1. Doc: This creates the table, dropping it first if it already existed*/
 sequelize.sync({ force: true })
 
@@ -32,7 +43,6 @@ module.exports = {
     Anunt,
     Campanie,
     Donatie,
-    DonatieCampanie,
     Mesaj,
     Obiect,
     Utilizator

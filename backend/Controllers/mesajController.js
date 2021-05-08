@@ -64,7 +64,7 @@ exports.getMesaj = async (req, res, next) => {
  * @returns {Promise<void>}
  */
 
-exports.postMesaj = async (req, res, result) => {
+exports.postMesaj = async (req, res, next) => {
     try {
         const mesaj = await Models.Mesaj.create(req.body)
         if(mesaj){

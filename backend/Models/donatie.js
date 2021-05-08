@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('donatie', {
-       donatie: {
+       id_donatie: {
            type: DataTypes.BIGINT,
            allowNull: false,
            primaryKey: true,
@@ -10,11 +10,7 @@ module.exports = (sequelize, DataTypes) => {
            type: DataTypes.BIGINT,
            allowNull: false,
            validate: {
-              checkValoare: () => {
-                if(this.getDataValue('valoare') < 1){
-                    throw new Error('Valoarea donata trebuie sa fie mai mare sau egala cu 1!')
-                }
-              }
+                len:[1,9999999999999999999]
            }
        },
     });

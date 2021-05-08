@@ -64,7 +64,7 @@ exports.getObiect = async (req, res, next) => {
  * @returns {Promise<void>}
  */
 
-exports.postObiect = async (req, res, result) => {
+exports.postObiect = async (req, res, next) => {
     try {
         const obiect = await Models.Obiect.create(req.body)
         if(obiect){

@@ -64,7 +64,7 @@ exports.getDonatie = async (req, res, next) => {
  * @returns {Promise<void>}
  */
 
-exports.postDonatie = async (req, res, result) => {
+exports.postDonatie = async (req, res, next) => {
     try {
         const Donatie = await Models.Donatie.create(req.body)
         if(Donatie){

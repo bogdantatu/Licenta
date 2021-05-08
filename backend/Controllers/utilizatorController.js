@@ -120,7 +120,7 @@ exports.putUtilizator = async (req, res, next) => {
  * @returns {Promise<void>}
  */
 
-exports.deleteUser = async (req, res, next) => {
+exports.deleteUtilizator = async (req, res, next) => {
     try {
         const id = req.params.id;
         const utilizator = await Models.Utilizator.findByPk(id)

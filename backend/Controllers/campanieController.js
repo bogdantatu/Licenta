@@ -13,7 +13,7 @@ const Op = Sequelize.Op
  * @param res The response
  * @returns {Promise<void>}
  */
-exports.getCampanie = async (req, res, next) => {
+exports.getCampanii = async (req, res, next) => {
     try {
         const campanii = await Models.Campanie.findAl()
         res.status(200).json(campanii)

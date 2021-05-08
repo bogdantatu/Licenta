@@ -114,7 +114,7 @@ exports.putMesaj = async (req, res, next) => {
  * @returns {Promise<void>}
  */
 
-exports.deleteMesaje = async (req, res, next) => {
+exports.deleteMesaj = async (req, res, next) => {
     try {
         const id = req.params.id;
         const mesaj = await Models.Mesaj.findByPk(id)

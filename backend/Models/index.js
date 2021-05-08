@@ -1,6 +1,7 @@
-const { userInfo } = require('node:os')
+const { BelongsToMany } = require('sequelize')
 const Sequelize = require('sequelize')
 const dbConfig = require('../Database/db-config')
+const anunt = require('./anunt')
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.dbUser, dbConfig.dbPassword, {
     host: dbConfig.host,
@@ -21,6 +22,8 @@ Utilizator.hasMany(Anunt)
 Obiect.belongsTo(Anunt)
 Anunt.hasMany(Mesaj, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
 Utilizator.hasMany(Mesaj, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
+Mesaj.belongsTo(Anunt)
+Anunt.hasOne(Obiect)
 
 Campanie.belongsTo(Utilizator)
 Utilizator.hasMany(Campanie)
@@ -34,7 +37,7 @@ sequelize.sync({ force: true })
 
 
 /**2. Pentru urmatoarele rulari ale programului, se vor comenta celelalte sync-uri si se va folosi : */
-//sequelize.sync()
+// sequelize.sync()
 
 /**3. In caz ca exista modificari la structura bazei de date (fisierele din models), se vor comenta celelalte sync-uri se va folosi :*/
 //sequelize.sync({alter:true})

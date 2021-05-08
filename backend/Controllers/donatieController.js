@@ -15,7 +15,7 @@ const Op = Sequelize.Op
  */
 exports.getDonatii = async (req, res, next) => {
     try {
-        const donatii = await Models.Donatie.findAl()
+        const donatii = await Models.Donatie.findAll()
         res.status(200).json(donatii)
     } catch (error) {
         next(error);

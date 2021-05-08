@@ -15,7 +15,7 @@ const Op = Sequelize.Op
  */
 exports.getAnunturi = async (req, res, next) => {
     try {
-        const anunturi = await Models.Anunt.findAl()
+        const anunturi = await Models.Anunt.findAll()
         res.status(200).json(anunturi)
     } catch (error) {
         next(error);
@@ -64,7 +64,7 @@ exports.getAnunt = async (req, res, next) => {
  * @returns {Promise<void>}
  */
 
-exports.postAnunt = async (req, res, result) => {
+exports.postAnunt = async (req, res, next) => {
     try {
         const anunt = await Models.Anunt.create(req.body)
         if(anunt){

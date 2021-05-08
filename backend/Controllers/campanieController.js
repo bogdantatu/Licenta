@@ -15,7 +15,7 @@ const Op = Sequelize.Op
  */
 exports.getCampanii = async (req, res, next) => {
     try {
-        const campanii = await Models.Campanie.findAl()
+        const campanii = await Models.Campanie.findAll()
         res.status(200).json(campanii)
     } catch (error) {
         next(error);

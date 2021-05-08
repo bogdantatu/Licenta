@@ -3,7 +3,7 @@ let controller = require('../Controllers/utilizatorController')
 let router = express.Router();
 
 /**
- * Router for object endpoint
+ * Router for user endpoint
  */
 
  router.get("/",controller.getUtilizatori)

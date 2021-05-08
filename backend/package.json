@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "controller": "^1.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "node-schedule": "^1.3.2",
+    "nodemon": "^2.0.6",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "router": "^1.3.5",
+    "save": "^2.4.0",
+    "sequelize": "^6.6.2",
+    "sequelize-auto": "^0.7.2",
+    "sequelize-auto-migrations": "^1.0.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}

@@ -15,7 +15,7 @@ const Op = Sequelize.Op
  */
 exports.getObiecte = async (req, res, next) => {
     try {
-        const obiecte = await Models.Obiect.findAl()
+        const obiecte = await Models.Obiect.findAll()
         res.status(200).json(obiecte)
     } catch (error) {
         next(error);

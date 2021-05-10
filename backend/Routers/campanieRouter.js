@@ -8,7 +8,7 @@ let router = express.Router();
 
  router.get("/",controller.getCampanii)
  router.get("/:id",controller.getCampanie)
- router.post('/',controller.postCampanie)
+ router.post('/:id_utilizator',controller.postCampanie)
  router.put('/:id',controller.putCampanie)
  router.delete('/:id',controller.deleteCampanie)
  

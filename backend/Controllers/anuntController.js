@@ -66,8 +66,12 @@ exports.getAnunt = async (req, res, next) => {
 
 exports.postAnunt = async (req, res, next) => {
     try {
+        const id = parseInt(req.params.id_utilizator);
+        req.body.utilizatorIdUtilizator = id;
         const anunt = await Models.Anunt.create(req.body)
-        if(anunt){
+        req.body.Obiect.anuntIdAnunt = anunt.id_anunt
+        const obiect = await Models.Obiect.create(req.body.Obiect)
+        if(anunt && obiect){
             res.status(201).json({message: "Anunt creat."})
         }
         else{

@@ -66,8 +66,14 @@ exports.getDonatie = async (req, res, next) => {
 
 exports.postDonatie = async (req, res, next) => {
     try {
-        const Donatie = await Models.Donatie.create(req.body)
-        if(Donatie){
+        const id_utilizator = parseInt(req.params.id_utilizator);
+        req.body.utilizatorIdUtilizator = id_utilizator;
+        const id_campanie = parseInt(req.params.id_campanie);
+        req.body.campanieIdCampanie = id_campanie;
+        console.log(id_utilizator)
+        console.log(id_campanie)
+        const donatie = await Models.Donatie.create(req.body)
+        if(donatie){
             res.status(201).json({message: "Donatie creata."})
         }
         else{

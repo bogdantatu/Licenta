@@ -66,8 +66,10 @@ exports.getCampanie = async (req, res, next) => {
 
 exports.postCampanie = async (req, res, result) => {
     try {
-        const Campanie = await Models.Campanie.create(req.body)
-        if(Campanie){
+        const id = parseInt(req.params.id_utilizator)
+        req.body.utilizatorIdUtilizator = id;
+        const campanie = await Models.Campanie.create(req.body)
+        if(campanie){
             res.status(201).json({message: "Campanie creata."})
         }
         else{

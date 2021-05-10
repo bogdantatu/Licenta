@@ -21,7 +21,7 @@ exports.getAnunturi = async (req, res, next) => {
         res.status(200).json(anunturi)
     } catch (error) {
         next(error);
-    }
+    } 
 }
 
 /**

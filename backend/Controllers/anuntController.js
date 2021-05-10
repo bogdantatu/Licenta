@@ -1,5 +1,7 @@
+const { where } = require('sequelize')
 const Sequelize = require('sequelize')
 const Models = require ('../Models')
+const utilizator = require('../Models/utilizator')
 const Op = Sequelize.Op
 
 /**
@@ -67,9 +69,9 @@ exports.getAnunt = async (req, res, next) => {
 exports.postAnunt = async (req, res, next) => {
     try {
         const id = parseInt(req.params.id_utilizator);
-        req.body.utilizatorIdUtilizator = id;
+        req.body.utilizatorId = id;
         const anunt = await Models.Anunt.create(req.body)
-        req.body.Obiect.anuntIdAnunt = anunt.id_anunt
+        req.body.Obiect.anuntId = anunt.id
         const obiect = await Models.Obiect.create(req.body.Obiect)
         if(anunt && obiect){
             res.status(201).json({message: "Anunt creat."})
@@ -79,6 +81,27 @@ exports.postAnunt = async (req, res, next) => {
         }
     } catch (error) {
         next(error);
+    }
+}
+
+exports.inchideAnunt = async (req, res, next) => {
+    try {
+        const id_anunt = parseInt(req.params.id_anunt);
+        const id_winner = parseInt(req.params.id_winner);
+        const anunt = await Models.Anunt.findByPk(id_anunt);
+        const obiect = await Models.Obiect.findOne({where: {anuntId: anunt.id}});
+
+        if(anunt && obiect){
+            res.status(200).json({message: 'Castigatorul obiectului a fost ales, iar anuntul s-a inchis.'})
+            anunt.isClosed = true;
+            await anunt.save()
+            obiect.utilizatorId = id_winner
+            await obiect.save()
+        } else {
+            res.status(400).json({message: "Inchidere esuata."})
+        }
+    } catch (error) {
+        next(error)
     }
 }
 

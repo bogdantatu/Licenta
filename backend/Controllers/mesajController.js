@@ -67,9 +67,9 @@ exports.getMesaj = async (req, res, next) => {
 exports.postMesaj = async (req, res, next) => {
     try {
         const id_utilizator = parseInt(req.params.id_utilizator)
-        req.body.utilizatorIdUtilizator = id_utilizator
+        req.body.utilizatorId = id_utilizator
         const id_anunt = parseInt(req.params.id_anunt)
-        req.body.anuntIdAnunt = id_anunt
+        req.body.anuntId = id_anunt
         const mesaj = await Models.Mesaj.create(req.body)
         if(mesaj){
             res.status(201).json({message: "Mesaj creat."})

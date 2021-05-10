@@ -64,10 +64,10 @@ exports.getCampanie = async (req, res, next) => {
  * @returns {Promise<void>}
  */
 
-exports.postCampanie = async (req, res, result) => {
+exports.postCampanie = async (req, res, next) => {
     try {
         const id = parseInt(req.params.id_utilizator)
-        req.body.utilizatorIdUtilizator = id;
+        req.body.utilizatorId = id;
         const campanie = await Models.Campanie.create(req.body)
         if(campanie){
             res.status(201).json({message: "Campanie creata."})

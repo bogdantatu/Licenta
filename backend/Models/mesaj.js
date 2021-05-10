@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('mesaj', {
-       id_mesaj: {
+       id: {
            type: DataTypes.BIGINT,
            allowNull: false,
            primaryKey: true,

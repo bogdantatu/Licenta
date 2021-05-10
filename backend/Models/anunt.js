@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('anunt', {
-       id_anunt: {
+       id: {
            type: DataTypes.BIGINT,
            allowNull: false,
            primaryKey: true,
@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
            validate: {
                len: [3, 100]
            }
+       },
+       isClosed:{
+           type:DataTypes.BOOLEAN,
+           defaultValue: false
        }
     });
    }

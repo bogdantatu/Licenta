@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('donatie', {
-       id_donatie: {
+       id: {
            type: DataTypes.BIGINT,
            allowNull: false,
            primaryKey: true,

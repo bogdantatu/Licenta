@@ -1,0 +1,242 @@
+.Section{
+    display: flex;
+    flex-flow: column;
+    font-size: small;
+}
+
+.LoginLeft{
+    background-color: #4BA3C3;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 15px;
+}
+
+.LoginLeftWrapper{
+    background-color: #4BA3C3;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+    height: 30vh;
+    width: 90%;
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    justify-content: center;
+    
+}
+.LoginLeftWrapper h1,
+.LoginLeftWrapper p{
+    padding-bottom:30px;
+}
+
+.LoginRight {
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    padding-top: 40px;
+
+}
+
+.LoginRightWrapper{
+    background-color: #ffffff;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+    height: 50vh;
+    width: 75%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+.LoginRightWrapper p{
+    padding:20px;
+    font-size:10px;
+}
+
+.Input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+
+}
+
+.Form{
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 20px;
+    text-align: center;
+    width: 100%
+}
+
+
+@media (min-width:500px) and (max-width:727px){
+    .Section{
+        display: flex;
+        flex-flow:row;
+    }
+    
+    .LoginRight {
+        background-color: #ffffff;
+        width:60%;
+        height:100vh;
+        display:flex;
+        flex-flow:column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top:0px;
+    }
+    
+    .LoginRightWrapper{
+        background-color: #ffffff;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        height:80vh;
+        width:75%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-flow:column;
+
+    }
+    .LoginRightWrapper p{
+        padding:20px;
+        font-size:10px;
+    }
+    
+    .LoginLeft{
+        background-color: #4BA3C3;
+        width: 40%;
+        height:100vh;
+        display:flex;
+        flex-flow:column;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0;
+        
+    }
+    
+    .LoginLeftWrapper{
+        background-color: #4BA3C3;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        height: 80vh;
+        width: 60%;
+        display: flex;
+        flex-flow: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .LoginLeftWrapper h1,
+    .LoginLeftWrapper p{
+        font-size:medium;
+    }
+    .Input {
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 100%;
+    
+    }
+    
+    .Form{
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px 20px;
+        text-align: center;
+        width: 80%
+    }
+    
+}
+
+
+
+@media (min-width: 728px){
+    .Section{
+        display: flex;
+        flex-flow:row;
+    }
+    
+    .LoginRight {
+        background-color: #ffffff;
+        width:60%;
+        height:100vh;
+        display:flex;
+        flex-flow:column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top:0px;
+    }
+    
+    .LoginRightWrapper{
+        background-color: #ffffff;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        height:80vh;
+        width:75%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-flow:column;
+
+    }
+    .LoginRightWrapper p{
+        padding:20px;
+        font-size:10px;
+    }
+    
+    .LoginLeft{
+        background-color: #4BA3C3;
+        width: 40%;
+        height:100vh;
+        display:flex;
+        flex-flow:column;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0;
+        
+    }
+    
+    .LoginLeftWrapper{
+        background-color: #4BA3C3;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        height: 80vh;
+        width: 60%;
+        display: flex;
+        flex-flow: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .LoginLeftWrapper h1,
+    .LoginLeftWrapper p{
+        padding-bottom:30px;
+    }
+    .Input {
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 100%;
+    
+    }
+    
+    .Form{
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px 20px;
+        text-align: center;
+        width: 70%
+    }
+}

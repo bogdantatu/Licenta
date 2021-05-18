@@ -6,7 +6,6 @@ import Register from '../../components/Authentication/Register/Register'
 
 
 
-
 class Authentication extends Component{
     render() {
         return(

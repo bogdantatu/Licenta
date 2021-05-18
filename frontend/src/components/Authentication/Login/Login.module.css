@@ -7,7 +7,7 @@
 .LoginLeft{
     background-color: #4BA3C3;
     width: 100%;
-    height: 30vh;
+    height: 25vh;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -19,7 +19,7 @@
 .LoginLeftWrapper{
     background-color: #4BA3C3;
     box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
-    height: 30vh;
+    height: 25vh;
     width: 90%;
     display: flex;
     flex-flow: column;
@@ -45,7 +45,7 @@
 .LoginRightWrapper{
     background-color: #ffffff;
     box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
-    height: 50vh;
+    height: 55vh;
     width: 75%;
     align-items: center;
     display: flex;
@@ -76,7 +76,11 @@
     text-align: center;
     width: 100%
 }
-
+.Register{
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+}
 
 @media (min-width:500px) and (max-width:727px){
     .Section{
@@ -156,7 +160,9 @@
         text-align: center;
         width: 80%
     }
-    
+    .Register{
+        display:flex;
+    }
 }
 
 
@@ -238,5 +244,10 @@
         padding: 20px 20px;
         text-align: center;
         width: 70%
+    }
+    .Register{
+        display:flex;
+        align-items:center;
+        margin-top:20px;
     }
 }

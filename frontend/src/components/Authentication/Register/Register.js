@@ -14,13 +14,16 @@ const register = (props) => (
                     <input className={classes.Input} type="password" name="password" placeholder="Password"/>            
                 <Button>Register</Button>
                 </form>
+                <div className={classes.Login}>
+                    <p>Do you already have an account?</p>
+                    <Button>Login now</Button>
+                </div>
             </div>
         </div>
         <div className={classes.RegisterLeft}>
             <div className={classes.RegisterLeftWrapper}>
                 <p>logo</p>
                 <h1>Denumire Aplicatie</h1>
-                <p>Do you already have an account?</p>
             </div>
         </div>
     </div>

@@ -21,6 +21,10 @@ const login = (props) => (
                 <p>Did you forgot your password?</p>
                 <Button>Login</Button>
                 </form>
+                <div className={classes.Register}>
+                    <p>You don't have an account yet?</p>
+                    <Button>Register now</Button>
+                </div>
             </div>
         </div>
     </div>

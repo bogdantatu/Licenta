@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-// import Layout from './hoc/Layout/Layout';
+import { Route, Switch } from 'react-router-dom'
+
+import Layout from './hoc/Layout/Layout';
 import Aux from './hoc/Aux/Aux'
-import Authentication from './containers/Authentication/Authentication';
+import Login from './components/Authentication/Login/Login'
+import Register from './components/Authentication/Register/Register'
 
 
 
@@ -9,8 +12,10 @@ class App extends Component {
   render() {
     return (
       <Aux>
-      <Authentication/>
-       {/* <Layout/> */}
+        <Switch>
+          {/* <Route path="/" component={Login}/> */}
+          <Route path="/" component={Register}/>
+        </Switch>
       </Aux> 
     
     );

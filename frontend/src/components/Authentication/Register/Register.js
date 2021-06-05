@@ -16,7 +16,7 @@ const register = (props) => (
                 </form>
                 <div className={classes.Login}>
                     <p>Do you already have an account?</p>
-                    <Button>Login now</Button>
+                    <Button clicked={props.switchLogin}>Login now</Button>
                 </div>
             </div>
         </div>

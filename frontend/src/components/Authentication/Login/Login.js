@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import classes from './Login.module.css';
 import Button from '../../UI/Button/Button'
 
@@ -23,7 +24,8 @@ const login = (props) => (
                 </form>
                 <div className={classes.Register}>
                     <p>You don't have an account yet?</p>
-                    <Button>Register now</Button>
+                    <Button
+                        clicked={props.switchRegister}>Register now</Button>
                 </div>
             </div>
         </div>

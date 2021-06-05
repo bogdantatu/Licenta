@@ -18,7 +18,7 @@ class LoginContainer extends Component{
         <div>
             <Login switchRegister={this.switchRegisterHandler}/>
             <Route 
-                    path={this.props.match.path + '/'} />
+                    path={this.props.match.path + '/login'} />
         </div>
         );
     };

@@ -16,7 +16,7 @@ class App extends Component {
         <Aux>
           <Switch>
             <Route path="/register" component={RegisterContainer}/>
-            <Route path="/" exact component={LoginContainer}/>
+            <Route path="/login" exact component={LoginContainer}/>
             <Layout>
               {/* <Route path="/dashboard" component={}/> */}
             </Layout>

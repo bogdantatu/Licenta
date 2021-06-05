@@ -30,7 +30,7 @@ class RegisterContainer extends Component{
             }
    
     switchLoginHandler = () => {
-        this.props.history.replace('/')
+        this.props.history.replace('/login')
        
     }
 

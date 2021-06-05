@@ -66,7 +66,7 @@ exports.getCampanie = async (req, res, next) => {
 
 exports.postCampanie = async (req, res, next) => {
     try {
-        const id = parseInt(req.params.id_utilizator)
+        const id = req.params.id_utilizator
         req.body.utilizatorId = id;
         const campanie = await Models.Campanie.create(req.body)
         if(campanie){

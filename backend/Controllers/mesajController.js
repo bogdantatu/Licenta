@@ -66,7 +66,7 @@ exports.getMesaj = async (req, res, next) => {
 
 exports.postMesaj = async (req, res, next) => {
     try {
-        const id_utilizator = parseInt(req.params.id_utilizator)
+        const id_utilizator = req.params.id_utilizator
         req.body.utilizatorId = id_utilizator
         const id_anunt = parseInt(req.params.id_anunt)
         req.body.anuntId = id_anunt

@@ -38,7 +38,7 @@ exports.getAnunturi = async (req, res, next) => {
 
 exports.getAnunt = async (req, res, next) => {
     try {
-        const id = parseInt(req.params.id)
+        const id = req.params.id
         if(isNaN(id)){
             res.status(400).json({message: 'ID-ul trebuie sa fie numar'})
         }
@@ -68,7 +68,7 @@ exports.getAnunt = async (req, res, next) => {
 
 exports.postAnunt = async (req, res, next) => {
     try {
-        const id = parseInt(req.params.id_utilizator);
+        const id = req.params.id_utilizator;
         req.body.utilizatorId = id;
         const anunt = await Models.Anunt.create(req.body)
         req.body.Obiect.anuntId = anunt.id
@@ -87,7 +87,7 @@ exports.postAnunt = async (req, res, next) => {
 exports.inchideAnunt = async (req, res, next) => {
     try {
         const id_anunt = parseInt(req.params.id_anunt);
-        const id_winner = parseInt(req.params.id_winner);
+        const id_winner = req.params.id_winner;
         const anunt = await Models.Anunt.findByPk(id_anunt);
         const obiect = await Models.Obiect.findOne({where: {anuntId: anunt.id}});
 

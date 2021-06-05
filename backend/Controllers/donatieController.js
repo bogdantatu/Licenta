@@ -66,7 +66,7 @@ exports.getDonatie = async (req, res, next) => {
 
 exports.postDonatie = async (req, res, next) => {
     try {
-        const id_utilizator = parseInt(req.params.id_utilizator);
+        const id_utilizator = req.params.id_utilizator;
         req.body.utilizatorId = id_utilizator;
         const id_campanie = parseInt(req.params.id_campanie);
         req.body.campanieId = id_campanie;

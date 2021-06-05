@@ -45,9 +45,9 @@ exports.getUtilizatori = async (req, res, next) => {
 
 exports.getUtilizator = async (req, res, next) => {
     try {
-        const id = parseInt(req.params.id);
-        if (isNaN(id)){
-            res.status(400).json({message: 'ID-ul trebuie sa fie un numar.'});
+        const id = req.params.id;
+        if (!typeof id === ('string')){
+            res.status(400).json({message: 'ID-ul nu este corect.'});
         }else{
             const utilizator = await Models.Utilizator.findByPk(id)
             if(utilizator)
@@ -76,7 +76,7 @@ exports.postUtilizator = async(req, res, next) => {
     try {
         const utilizator = await Models.Utilizator.create(req.body)
         if(utilizator)
-        res.status(201).json({message: 'Utilizator creat.'})
+        res.status(201).json(utilizator)
         else
         res.status(400).json({message: 'Crearea utilizatorul a esuat.'})
     } catch (error) {

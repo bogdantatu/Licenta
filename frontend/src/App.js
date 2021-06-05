@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 
-import firebaseConfig from './firebaseConfig';
+
 import Layout from './hoc/Layout/Layout';
 import Aux from './hoc/Aux/Aux'
 import LoginContainer from './containers/Authentication/LoginContainer/LoginContainer';
@@ -17,10 +17,12 @@ class App extends Component {
           <Switch>
             <Route path="/register" component={RegisterContainer}/>
             <Route path="/" exact component={LoginContainer}/>
+            <Layout>
+              {/* <Route path="/dashboard" component={}/> */}
+            </Layout>
           </Switch>
         </Aux> 
       </div>
-    
     );
   }
 }

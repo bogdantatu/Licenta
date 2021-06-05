@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 
+import firebaseConfig from './firebaseConfig';
 import Layout from './hoc/Layout/Layout';
 import Aux from './hoc/Aux/Aux'
 import LoginContainer from './containers/Authentication/LoginContainer/LoginContainer';

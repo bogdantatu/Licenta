@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
+import axios from 'axios';
+
 
 import Register from '../../../components/Authentication/Register/Register'
+import firebaseConfig from '../../../firebaseConfig';
 
 
 class RegisterContainer extends Component{
     constructor(props){
         super(props);
     }
+   
     switchLoginHandler = () => {
         this.props.history.replace('/')
+       
     }
     render() {
         return(

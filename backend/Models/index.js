@@ -38,14 +38,14 @@ Utilizator.hasMany(Donatie, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'
 /* Constraints END */
 
 /**1. Doc: This creates the table, dropping it first if it already existed*/
-sequelize.sync({ force: true })
+// sequelize.sync({ force: true })
 
 
 /**2. Pentru urmatoarele rulari ale programului, se vor comenta celelalte sync-uri si se va folosi : */
 // sequelize.sync()
 
 /**3. In caz ca exista modificari la structura bazei de date (fisierele din models), se vor comenta celelalte sync-uri se va folosi :*/
-// sequelize.sync({alter:true})
+sequelize.sync({alter:true})
 
 module.exports = {
     Anunt,

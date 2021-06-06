@@ -6,16 +6,23 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         // autoIncrement: true,
     },
-    nume: {
+    userName: {
         type: DataTypes.STRING(50),
         allowNull: false,
         validate: {
             len: [2,20]
         }
     },
+    nume: {
+        type: DataTypes.STRING(50),
+        allowNull: true,
+        validate: {
+            len: [2,20]
+        }
+    },
     prenume: {
         type: DataTypes.STRING(50),
-        allowNull: false,
+        allowNull: true,
         validate: {
             len: [2,20]
         }
@@ -34,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     isModerator: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
     }
  });
 }

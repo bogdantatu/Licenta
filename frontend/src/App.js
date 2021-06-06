@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 
 import Layout from './hoc/Layout/Layout';
 import Aux from './hoc/Aux/Aux'
-import LoginContainer from './containers/Authentication/LoginContainer/LoginContainer';
-import RegisterContainer from './containers/Authentication/RegisterContainer/RegisterContainer'
-
+import Login from './components/Authentication/Login/Login';
+import Register from './components/Authentication/Register/Register';
+// import LoginRegister from './containers/Authentication/LoginRegister';
 
 
 class App extends Component {
@@ -15,8 +15,13 @@ class App extends Component {
       <div>
         <Aux>
           <Switch>
-            <Route path="/register" component={RegisterContainer}/>
-            <Route path="/login" exact component={LoginContainer}/>
+            <Route path="/register" component={Register}/>
+            <Route path="/login" exact component={Login}/>
+            {/* <Route exact
+                   path='/login'
+                   render={() =>
+                    this.props.currentUser ? (<Redirect to='/'/>) : (<LoginRegister />)
+                    }/> */}
             <Layout>
               {/* <Route path="/dashboard" component={}/> */}
             </Layout>

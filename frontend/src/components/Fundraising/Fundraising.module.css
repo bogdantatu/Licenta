@@ -1,0 +1,7 @@
+.Fundraising{
+    display:flex;
+    justify-content: center;
+    height: 50em;
+    background-color: lightslategray;
+    margin: 10px 10em 0px 10em
+}

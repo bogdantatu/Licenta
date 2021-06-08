@@ -6,7 +6,7 @@ import Menu from '../Menu/Menu';
 const toolbar = (props) => (
    <header className={classes.Toolbar}>
        <nav className={classes.DesktopNav}>
-           <Menu/>
+           <Menu />
         </nav>
    </header>
 );

@@ -25,7 +25,8 @@ const menu = (props) => (
         </li>
         <MenuObject link="/fundraising">Fundraising</MenuObject>
         <MenuObject link="/sharing">Object Sharing</MenuObject>
-        <li><IconButton> <AccountCircleIcon/></IconButton></li>
+        {/* <li><IconButton> <AccountCircleIcon/></IconButton></li> */}
+        <MenuObject link="/profile"><IconButton > <AccountCircleIcon /></IconButton></MenuObject>
     </ul>
 );
 export default menu;

@@ -19,11 +19,11 @@
 .searchIcon {
     height: 100%;
     display: flex;
-    padding: 0px 16px;
+    padding: 16px 16px;
     position: absolute;
     align-items: center;
     pointer-events: none;
-    justify-content: center;
+    justify-content: center; 
   }
 
 .inputRoot {

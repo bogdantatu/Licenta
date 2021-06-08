@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Profile from '../../components/Profile/Profile
-'
+import Profile from '../../components/Profile/Profile'
+
 class ProfilePage extends Component{
     render(){
         return(

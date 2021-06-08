@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'
 
+
+
 import {setLoggedUser} from './store/User/action'
 import {connect} from 'react-redux';
 import firebase from './firebase'
@@ -25,12 +27,12 @@ class App extends Component {
     this.logOut = firebase.auth().onAuthStateChanged(user => {
       if(user){
         axios.get(`http://localhost:8080/utilizator/${user.uid}`)
-          .then(user => {
-            setLoggedUser(user)
-          })
-          .catch(err => {
-            alert(err)
-          })
+        .then(user => {
+          setLoggedUser(user)
+        })
+        .catch(err => {
+          alert(err)
+        })
       }else{
       setLoggedUser(user)
       }
@@ -48,7 +50,7 @@ class App extends Component {
         <Aux>
           <Switch>
             <Route path="/register" component={Register}/>
-            <Route path="/login" exact component={Login}/>
+            <Route path="/" exact component={Login}/>
             {/* <Route exact path='/'>
                     {this.props.loggedUser ? <Redirect to="/fundraising" /> : <LoginRegister />}
                     

@@ -29,6 +29,7 @@ const fundraising = (props) => (
             </ul>
         </div>
     </div>
+
 );
 
 export default fundraising;

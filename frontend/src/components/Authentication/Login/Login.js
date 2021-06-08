@@ -20,7 +20,7 @@ class Login extends Component{
         try {
             firebase.auth()
                 .signInWithEmailAndPassword(this.state.email, this.state.password)
-                .then(this.props.history.replace('/'))
+                .then(this.props.history.replace('/fundraising'))
         } catch (error) {
             console.log(error)
         }
@@ -78,7 +78,7 @@ class Login extends Component{
                     </div>
                 </div>
                 <Route 
-                    path={this.props.match.path + '/login'} />
+                    path={this.props.match.path + '/'} />
             </div>
         )
     }

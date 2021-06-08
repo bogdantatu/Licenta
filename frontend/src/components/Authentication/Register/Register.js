@@ -29,7 +29,10 @@ class Register extends Component{
                             userName: this.state.username,
                             email: res.user.email,
                         })
-                        .then(this.props.history.replace('/'));
+                        .then(response => {
+                            if(response.data) 
+                                this.props.history.replace('/fundraising')
+                        });
                     })
             } catch (error) {
                 console.log(error)
@@ -38,7 +41,7 @@ class Register extends Component{
 
 
     switchLoginHandler = () => {
-        this.props.history.replace('/login')
+        this.props.history.replace('/')
     }
 
     changeHandler = (evt) => {

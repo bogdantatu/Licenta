@@ -1,28 +1,58 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'
 
+import {setLoggedUser} from './store/User/action'
+import {connect} from 'react-redux';
+import firebase from './firebase'
+
 
 import Layout from './hoc/Layout/Layout';
 import Aux from './hoc/Aux/Aux'
 import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
-// import LoginRegister from './containers/Authentication/LoginRegister';
+import LoginRegister from './containers/Authentication/LoginRegister';
 import FundraisingList from './containers/Fundraising/FundraisingList'
 import ProfilePage from './containers/Profile/ProfilePage'
+import axios from 'axios';
+
 
 class App extends Component {
+
+  logOut = null;
+
+  componentDidMount(){
+    const {setLoggedUser} = this.props
+    this.logOut = firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        axios.get(`http://localhost:8080/utilizator/${user.uid}`)
+          .then(user => {
+            setLoggedUser(user)
+          })
+          .catch(err => {
+            alert(err)
+          })
+      }else{
+      setLoggedUser(user)
+      }
+    })
+  }
+
+  componentWillUnmount(){
+    this.logOut()
+  }
+
   render() {
+    
     return (
       <div>
         <Aux>
           <Switch>
             <Route path="/register" component={Register}/>
             <Route path="/login" exact component={Login}/>
-            {/* <Route exact
-                   path='/login'
-                   render={() =>
-                    this.props.currentUser ? (<Redirect to='/'/>) : (<LoginRegister />)
-                    }/> */}
+            {/* <Route exact path='/'>
+                    {this.props.loggedUser ? <Redirect to="/fundraising" /> : <LoginRegister />}
+                    
+            </Route> */}
             <Layout>
               <Route path="/fundraising" component={FundraisingList}/>
               <Route path="/profile" component={ProfilePage}/>
@@ -34,4 +64,14 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({user}) => ({
+  loggedUser: user.loggedUser
+})
+
+const mapDispatchToProps = dispatch => (
+  {
+      setLoggedUser: user => dispatch(setLoggedUser(user))
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

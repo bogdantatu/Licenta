@@ -1,7 +1,40 @@
 .Fundraising{
     display:flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     height: 50em;
     background-color: lightslategray;
-    margin: 10px 10em 0px 10em
+    margin: 10px 10em 0px 10em;
+    border-radius:10px;
+    border:1px;
+
+}
+
+.btnContainer{
+    background-color:  #F4A261;
+    height:10%;
+    display:flex;
+    justify-content: space-evenly;
+    border-radius: 0 0 10px 10px;
+    width: 60%;
+}
+
+.btnAdd{
+    background-color:#4BA3C3 !important;
+    border-right: 0.5px solid black !important;
+    width: 50%;
+    border-radius: 0 0 0 10px !important;
+}
+
+
+.btnView{
+    background-color:#D9C5B2 !important;
+    border-left: 0.5px solid black !important;
+    width: 50%;
+    border-radius: 0 0 10px 0 !important;
+}
+
+.Fundraisers{
+    width:100%;
+    padding:50px 20px 10px 20px;
 }

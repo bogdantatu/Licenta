@@ -26,9 +26,8 @@ class Login extends Component{
             firebase.auth()
                 .signInWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
-                    axios.get(`http://localhost:8080/utilizator?email=${this.state.email}`)
+                    axios.get(`http://localhost:8080/utilizator/email/?filter=${this.state.email}`)
                                 .then(res => {
-                                    console.log(res)
                                   setLoggedUser(res.data)
                                  
                                 })
@@ -36,11 +35,6 @@ class Login extends Component{
                                   alert(err)
                                 })
                                 this.props.history.replace('/fundraising')
-                                this.setState({
-                                    email:"",
-                                    password:""
-                   
-                    })
                 })
         } catch (error) {
             console.log(error)

@@ -38,11 +38,6 @@ class Register extends Component{
                             if(response.data){ 
                                 setLoggedUser(response.data)
                                 this.props.history.replace('/fundraising')
-                                this.setState({
-                                    username:"",
-                                    email:"",
-                                    password:""
-                                })
                             }
                         });
                     })

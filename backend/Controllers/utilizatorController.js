@@ -15,16 +15,8 @@ const Op = Sequelize.Op
  */
 
 exports.getUtilizatori = async (req, res, next) => {
-    const query = {
-        where: {}
-    }
-    if(req.query.filter){
-        query.where.email = {
-            [Op.like]: `%${req.query.filter}%`
-        }
-    }
     try {
-        const users = await Models.Utilizator.findAll(query)
+        const users = await Models.Utilizator.findAll()
         res.status(200).json(users)
     } catch (error) {
         next(error);
@@ -60,12 +52,27 @@ exports.getUtilizator = async (req, res, next) => {
     }
 }
 
+exports.getUtilizatorEmail = async (req, res, next) => {
+    const query = {
+        where:{}
+    }
+    if(req.query.filter){
+        query.where.email = {
+        [Op.like]: `%${req.query.filter}%`
+        }
+    }
+    try {
+        const utilizator = await Models.Utilizator.findOne(query)
+        res.status(200).json(utilizator)
+    } catch (error) {
+        next(error);
+    }
+}
+
 /**
  * Function handling the POST request for a user
  *
  * Responds with status code 201 if successful and 400 if failed
- *
- * The RandomJury function is scheduled here
  *
  * @param req The request
  * @param res The response

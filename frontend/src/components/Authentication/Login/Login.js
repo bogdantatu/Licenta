@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
+import {connect} from 'react-redux';
+
+import {setLoggedUser} from '../../../store/User/action'
 
 import firebase from '../../../firebase';
 import axios from 'axios';
@@ -20,7 +23,16 @@ class Login extends Component{
         try {
             firebase.auth()
                 .signInWithEmailAndPassword(this.state.email, this.state.password)
-                .then(this.props.history.replace('/fundraising'))
+                .then(() => {
+                    axios.get(`http://localhost:8080/utilizator/${response.data.uid}`)
+                                .then(user => {
+                                  setLoggedUser(user)
+                                })
+                                .catch(err => {
+                                  alert(err)
+                                })
+                    this.props.history.replace('/fundraising')
+                })
         } catch (error) {
             console.log(error)
         }
@@ -83,6 +95,13 @@ class Login extends Component{
         )
     }
 }
-export default Login;
+  
+  const mapDispatchToProps = dispatch => (
+    {
+        setLoggedUser: user => dispatch(setLoggedUser(user))
+    }
+  );
+  
+export default connect(null, mapDispatchToProps)(Login);
 
 

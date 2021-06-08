@@ -22,19 +22,22 @@ class App extends Component {
 
   logOut = null;
 
+  delayRender = (ms) => {
+    const date=Date.now()
+    let currentDate = null;
+    console.log("a inceput)")
+    do{
+      currentDate=Date.now;
+    }while(currentDate-date <ms)
+    console.log('gata')
+  }
+
+  
   componentDidMount(){
     const {setLoggedUser} = this.props
     this.logOut = firebase.auth().onAuthStateChanged(user => {
-      if(user){
-        axios.get(`http://localhost:8080/utilizator/${user.uid}`)
-        .then(user => {
-          setLoggedUser(user)
-        })
-        .catch(err => {
-          alert(err)
-        })
-      }else{
-      setLoggedUser(user)
+      if(!user){
+        setLoggedUser(user)
       }
     })
   }

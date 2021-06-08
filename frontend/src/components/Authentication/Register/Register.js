@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
+import {connect} from 'react-redux';
+
+import {setLoggedUser} from '../../../store/User/action'
+
 
 import classes from './Register.module.css';
 import Button from '../../UI/Button/Button'
@@ -20,6 +24,7 @@ class Register extends Component{
 
     registerHandler = (e) => {
         e.preventDefault()
+        const { loggedUser } = this.props
             try {
                  firebase.auth()
                     .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -30,8 +35,10 @@ class Register extends Component{
                             email: res.user.email,
                         })
                         .then(response => {
-                            if(response.data) 
+                            if(response.data){ 
+                                setLoggedUser(response.data)
                                 this.props.history.replace('/fundraising')
+                            }
                         });
                     })
             } catch (error) {
@@ -98,6 +105,13 @@ class Register extends Component{
     }
    
 }
-export default Register;
+
+  const mapDispatchToProps = dispatch => (
+    {
+        setLoggedUser: user => dispatch(setLoggedUser(user))
+    }
+  );
+  
+export default connect(null, mapDispatchToProps)(Register);
 
 

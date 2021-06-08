@@ -25,6 +25,7 @@ const fundraising = (props) => (
         <div className={classes.Fundraisers}>
             <ul>
                 <Fundraiser name="Salvati balenele" shortDescription="Impreuna salvam balenele"/>
+                <Fundraiser name="Salvati balenele" shortDescription="Impreuna salvam balenele"/>
             </ul>
         </div>
     </div>

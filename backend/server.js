@@ -35,4 +35,4 @@ app.use('/mesaj', mesajRouter);
 app.use('/obiect', obiectRouter);
 app.use('/utilizator', utilizatorRouter);
 
-app.listen(8000);
+app.listen(8080);

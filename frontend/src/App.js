@@ -8,6 +8,7 @@ import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
 // import LoginRegister from './containers/Authentication/LoginRegister';
 import FundraisingList from './containers/Fundraising/FundraisingList'
+import ProfilePage from './containers/Profile/ProfilePage'
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
                     }/> */}
             <Layout>
               <Route path="/fundraising" component={FundraisingList}/>
+              <Route path="/profile" component={ProfilePage}/>
             </Layout>
           </Switch>
         </Aux> 

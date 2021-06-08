@@ -6,7 +6,7 @@ let router = express.Router();
  * Router for user endpoint
  */
 
- router.get("/", controller.getUtilizatorEmail)
+ router.get("/email/", controller.getUtilizatorEmail)
  router.get("/",controller.getUtilizatori)
  router.get("/:id",controller.getUtilizator)
  router.post('/',controller.postUtilizator)

@@ -19,19 +19,28 @@ class Login extends Component{
         }
     }
     
-    handleLogin = () => {
+    handleLogin = (e) => {
+        e.preventDefault()
+        const { setLoggedUser } = this.props
         try {
             firebase.auth()
                 .signInWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
-                    axios.get(`http://localhost:8080/utilizator/${response.data.uid}`)
-                                .then(user => {
-                                  setLoggedUser(user)
+                    axios.get(`http://localhost:8080/utilizator?email=${this.state.email}`)
+                                .then(res => {
+                                    console.log(res)
+                                  setLoggedUser(res.data)
+                                 
                                 })
                                 .catch(err => {
                                   alert(err)
                                 })
-                    this.props.history.replace('/fundraising')
+                                this.props.history.replace('/fundraising')
+                                this.setState({
+                                    email:"",
+                                    password:""
+                   
+                    })
                 })
         } catch (error) {
             console.log(error)

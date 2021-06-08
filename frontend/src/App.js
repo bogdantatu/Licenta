@@ -12,7 +12,6 @@ import Layout from './hoc/Layout/Layout';
 import Aux from './hoc/Aux/Aux'
 import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
-import LoginRegister from './containers/Authentication/LoginRegister';
 import FundraisingList from './containers/Fundraising/FundraisingList'
 import ProfilePage from './containers/Profile/ProfilePage'
 import axios from 'axios';

@@ -24,7 +24,7 @@ class Register extends Component{
 
     registerHandler = (e) => {
         e.preventDefault()
-        const { loggedUser } = this.props
+        const { setLoggedUser } = this.props
             try {
                  firebase.auth()
                     .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -38,6 +38,11 @@ class Register extends Component{
                             if(response.data){ 
                                 setLoggedUser(response.data)
                                 this.props.history.replace('/fundraising')
+                                this.setState({
+                                    username:"",
+                                    email:"",
+                                    password:""
+                                })
                             }
                         });
                     })

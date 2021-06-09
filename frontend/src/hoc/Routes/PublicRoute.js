@@ -10,7 +10,7 @@ const PublicRoute = ({component: Component, restricted, loggedUser, ...rest}) =>
         // restricted = false meaning public route
         // restricted = true meaning restricted route
         <Route {...rest} render={props => (
-            loggedUser && restricted ?
+            restricted && loggedUser ?
                 <Redirect to="/fundraising" />
             : <Component {...props} />
         )} />

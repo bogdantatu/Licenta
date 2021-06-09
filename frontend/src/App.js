@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 
 
 
@@ -40,13 +40,11 @@ class App extends Component {
       <div>
         <Aux>
           <Switch>
-            <Route path="/register" component={Register}/>
-            {/* <Route path="/" exact component={Login}/> */}
             <PublicRoute restricted={true} component={Login} path="/" exact />
+            <PublicRoute restricted={true} component={Register} path="/register" exact />
             <Layout>
-              {/* <Route path="/fundraising" component={FundraisingList}/> */}
               <PrivateRoute component={FundraisingList} path="/fundraising" exact />
-              <Route path="/profile" component={ProfilePage}/>
+              <PrivateRoute component={ProfilePage} path="/profile" exact />
             </Layout>
           </Switch>
         </Aux> 

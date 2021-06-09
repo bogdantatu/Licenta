@@ -8,11 +8,11 @@ import {connect} from 'react-redux';
 const PrivateRoute = ({component: Component, loggedUser, ...rest}) => {
     return (
         // Show the component only when the user is logged in
-        // Otherwise, redirect the user to /signin page
+        // Otherwise, redirect the user to / page
         <Route {...rest} render={props => (
             loggedUser ?
                 <Component {...props} />
-            : <Redirect to="/" />
+            : <Redirect to="/"/>
         )} />
     );
 };

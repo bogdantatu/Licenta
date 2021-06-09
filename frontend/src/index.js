@@ -7,12 +7,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { store } from './store/store'
+import { store, persistor } from './store/store'
+import {PersistGate} from "redux-persist/integration/react";
+
 
 const app = (
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <PersistGate persistor={persistor}>
+                <App />
+            </PersistGate>
         </BrowserRouter>
     </Provider>
 );

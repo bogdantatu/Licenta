@@ -13,12 +13,14 @@ const fundraising = (props) => (
         <div className={classes.btnContainer}>
             <Button 
                 className={classes.btnAdd}
-                startIcon={<AddCircleIcon/>}>
+                startIcon={<AddCircleIcon/>}
+                onClick={props.clickedAdd}>
                 Create a fundraiser
             </Button>
             <Button 
                 className={classes.btnView}
-                startIcon={<VisibilityIcon/>}>
+                startIcon={<VisibilityIcon/>}
+                onClick={props.clickedView}>
                 View your campaigns
             </Button>
         </div>

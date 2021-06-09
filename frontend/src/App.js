@@ -14,6 +14,7 @@ import Aux from './hoc/Aux/Aux'
 import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
 import FundraisingList from './containers/Fundraising/FundraisingList'
+import FundraiserBuilder from './containers/Fundraising/FundraiserBuilder/FundraiserBuilder'
 import ProfilePage from './containers/Profile/ProfilePage'
 
 
@@ -43,7 +44,8 @@ class App extends Component {
             <PublicRoute restricted={true} component={Login} path="/" exact />
             <PublicRoute restricted={true} component={Register} path="/register" exact />
             <Layout>
-              <PrivateRoute component={FundraisingList} path="/fundraising" exact />
+              <PrivateRoute component={FundraisingList} path="/fundraising"  exact />
+              <PrivateRoute component={FundraiserBuilder} path="/addfundraiser"  exact />
               <PrivateRoute component={ProfilePage} path="/profile" exact />
             </Layout>
           </Switch>

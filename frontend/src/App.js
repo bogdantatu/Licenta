@@ -13,7 +13,6 @@ import Aux from './hoc/Aux/Aux'
 import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
 import FundraisingList from './containers/Fundraising/FundraisingList'
-import FundraiserBuilder from './containers/Fundraising/FundraiserBuilder/FundraiserBuilder'
 import ProfilePage from './containers/Profile/ProfilePage'
 import AddFundraiser from './components/Fundraising/AddFundraiser/AddFundraiser'
 

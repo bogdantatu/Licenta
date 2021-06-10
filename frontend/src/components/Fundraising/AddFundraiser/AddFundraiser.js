@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+
 import classes from './AddFundraiser.module.css';
 
 class AddFundraiser extends Component {
@@ -14,6 +20,7 @@ class AddFundraiser extends Component {
         }
     }
 
+    
     changeHandler = (evt) => {
         this.setState({
             [evt.target.name] : evt.target.value
@@ -27,60 +34,88 @@ class AddFundraiser extends Component {
                 <form className={classes.Form}>
                     <label>
                         Campaign Title
-                    <input 
+                    </label>
+                    <TextField
                         className={classes.Input} 
-                        type="title" 
-                        name="title" 
+                        id="outlined-basic" 
+                        label="Title" 
+                        variant="outlined" 
+                        type="title"
+                        name="title"
                         value={this.state.title}
-                        placeholder="Title"
-                        onChange={this.changeHandler}
-                        required/> 
-                    </label>  
-                    <label>
-                        Short Description
-                    <input 
-                        className={classes.Input} 
-                        type="shortDescription" 
-                        name="shortDescription" 
-                        value={this.state.shortDescription}
-                        placeholder="The statement that best describes your fundraising campaign"
                         onChange={this.changeHandler}
                         required/>
-                    </label>
                     <label>
-                        Description
-                    <input 
-                        className={classes.Input} 
-                        type="description" 
-                        name="description" 
-                        value={this.state.description}
-                        placeholder="Description"
-                        onChange={this.changeHandler}
-                        required/>  
+                        Short Description
                     </label>
+                    <TextField 
+                        className={classes.Input} 
+                        id="outlined-basic" 
+                        label="Short Description" 
+                        variant="outlined" 
+                        type="shortDescription"
+                        name="shortDescription"
+                        value={this.state.shortDescription}
+                        onChange={this.changeHandler}
+                        required/>
+                    <label>
+                        Fundraiser Description
+                    </label>
+                    <TextField
+                        className={classes.Input} 
+                        id="outlined-multiline-static"
+                        label="Description"
+                        multiline
+                        rows={4}
+                        variant="outlined"
+                        type="description"
+                        name="description"
+                        value={this.state.description}
+                        onChange={this.changeHandler}
+                        required/>
                     <label>
                         Contact data
-                    <input 
-                        className={classes.Input} 
-                        type="contactData" 
-                        name="contactData" 
-                        value={this.state.contactData}
-                        placeholder="Contact"
-                        onChange={this.changeHandler}
-                        required/>  
                     </label>
+                    <TextField
+                        className={classes.Input}  
+                        id="outlined-basic" 
+                        label="Contact" 
+                        variant="outlined" 
+                        type="contactData"
+                        name="contactData"
+                        value={this.state.contactData}
+                        onChange={this.changeHandler}
+                        required/>
                     <label>
                         Goal
-                    <input 
-                        className={classes.Input} 
-                        type="goal" 
-                        name="goal" 
-                        value={this.state.goal}
-                        placeholder="Goal"
-                        onChange={this.changeHandler}
-                        required/>  
                     </label>
+                    <TextField 
+                        className={classes.Input} 
+                        id="outlined-basic" 
+                        label="Goal" 
+                        variant="outlined" 
+                        type="goal"
+                        name="goal"
+                        value={this.state.goal}
+                        onChange={this.changeHandler}
+                        required/>
                 </form>
+                <div className={classes.btnContainer}>
+                 <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    className={classes.btnAdd}
+                    startIcon={<AddCircleIcon/>}
+                    onClick={this.props.clickedAdd}>Add</Button>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    className={classes.btnCancel}
+                    startIcon={<DeleteIcon />}
+                    onClick={this.props.clickedCancel}> Cancel</Button>
+                </div>
             </div>
         </div>
     )}

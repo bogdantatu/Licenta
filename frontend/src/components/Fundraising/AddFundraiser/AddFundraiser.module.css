@@ -4,26 +4,52 @@
     display:flex;
     align-items: center;
     flex-direction:column;
-
     margin:0 !important;
 }
 .title{
-    padding:20px
+    padding:10px
 }
 
 .FormContainer{
     background-color:#4BA3C3;
-    width: 80vw;
-    height: 40vw;
+    width: 80%;
+    padding-top:20px;
     border-radius:10px;
     display:flex;
     align-items: center;
     justify-content: center;
-
+    flex-flow:column;
+    border: 5px solid salmon;
 
 }
 
 .Form{
     display:flex;
     flex-direction:column;
+    width:80%;
 }
+.Input{
+    margin:5px !important; 
+    font-family: 'Baloo Tammudu 2', cursive !important;
+}
+
+.btnContainer{
+    padding: 30px;
+    display:flex;
+    flex-flow: row;
+    
+}
+
+.btnAdd{
+    padding-right:50px !important;
+    margin-right:5px !important;
+    font-family: 'Baloo Tammudu 2', cursive !important;
+}
+
+.btnCancel{
+    padding-right:20px !important;
+    margin-left: 5px !important;
+    font-family: 'Baloo Tammudu 2', cursive !important;
+
+}
+

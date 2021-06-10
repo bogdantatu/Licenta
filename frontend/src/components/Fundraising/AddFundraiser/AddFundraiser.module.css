@@ -31,7 +31,9 @@
 .Input{
     margin:5px !important; 
     font-family: 'Baloo Tammudu 2', cursive !important;
+    background-color: lightslategray !important;
 }
+
 
 .btnContainer{
     padding: 30px;

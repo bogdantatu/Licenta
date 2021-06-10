@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom'
 
-
-
 import {setLoggedUser} from './store/User/action'
 import {connect} from 'react-redux';
+
 import firebase from './firebase'
 import PrivateRoute from './hoc/Routes/PrivateRoute'
 import PublicRoute from'./hoc/Routes/PublicRoute'

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import axios from 'axios'
 
 import classes from './AddFundraiser.module.css';
 
@@ -19,7 +21,18 @@ class AddFundraiser extends Component {
             goal: null
         }
     }
-
+  
+    addHandler = () => {
+        axios.post(`http://localhost:8080/campanie/${this.props.loggedUser.id}`, {
+            titlu: this.state.title,
+            descriereScurta: this.state.shortDescription,
+            descriere: this.state.description,
+            dateContact: this.state.contactData,
+            goal: this.state.goal
+        })
+        .then(res => console.log(res))
+        .catch(err => alert(err))
+    }
     
     changeHandler = (evt) => {
         this.setState({
@@ -107,7 +120,7 @@ class AddFundraiser extends Component {
                     size="large"
                     className={classes.btnAdd}
                     startIcon={<AddCircleIcon/>}
-                    onClick={this.props.clickedAdd}>Add</Button>
+                    onClick={this.addHandler}>Add</Button>
                 <Button
                     variant="contained"
                     color="secondary"
@@ -120,4 +133,9 @@ class AddFundraiser extends Component {
         </div>
     )}
 }
-export default AddFundraiser;
+
+const mapStateToProps = ({user}) => ({
+    loggedUser: user.loggedUser
+  })
+  
+export default connect(mapStateToProps)(AddFundraiser);

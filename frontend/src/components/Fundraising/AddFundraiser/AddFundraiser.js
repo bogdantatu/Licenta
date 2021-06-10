@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { Route } from 'react-router-dom'
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -30,8 +31,13 @@ class AddFundraiser extends Component {
             dateContact: this.state.contactData,
             goal: this.state.goal
         })
+        .then(()=>this.props.history.replace('/fundraising'))
         .then(res => console.log(res))
         .catch(err => alert(err))
+    }
+
+    cancelHandler = () => {
+        this.props.history.replace('/fundraising')
     }
     
     changeHandler = (evt) => {
@@ -127,9 +133,11 @@ class AddFundraiser extends Component {
                     size="large"
                     className={classes.btnCancel}
                     startIcon={<DeleteIcon />}
-                    onClick={this.props.clickedCancel}> Cancel</Button>
+                    onClick={this.cancelHandler}> Cancel</Button>
                 </div>
             </div>
+            <Route 
+                path={this.props.match.path + '/addfundraiser'}/>
         </div>
     )}
 }

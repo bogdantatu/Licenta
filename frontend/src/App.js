@@ -16,7 +16,7 @@ import FundraisingList from './containers/Fundraising/FundraisingList'
 import ProfilePage from './containers/Profile/ProfilePage'
 import AddFundraiser from './components/Fundraising/AddFundraiser/AddFundraiser'
 import FundraiserPage from './components/Fundraising/FundraiserPage/FundraiserPage';
-
+import UserFundraisers from './components/Fundraising/UserFundraisers/UserFundraisers'
 
 class App extends Component {
 
@@ -44,6 +44,7 @@ class App extends Component {
             <PublicRoute restricted={true} component={Register} path="/register" exact />
             <Layout>
               <PrivateRoute component={FundraisingList} path="/fundraising"  exact />
+              <PrivateRoute component={UserFundraisers} path="/myfundraisers" exact />
               <PrivateRoute component={AddFundraiser} path="/addfundraiser"  exact />
               <PrivateRoute component={FundraiserPage} path="/campanie/"  exact />
               <PrivateRoute component={ProfilePage} path="/profile" exact />

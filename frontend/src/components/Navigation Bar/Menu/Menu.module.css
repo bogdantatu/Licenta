@@ -36,6 +36,13 @@
     transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     padding-left: calc(1em + 32px);
 }
+a[href="/profile"]{ 
+  padding-top: 2px !important;
+}
+input[placeholder="Search…"]{
+  padding-left:4px;
+  margin-top:6px;
+}
 
 @media (min-width:500px) {
     .Menu{

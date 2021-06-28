@@ -28,7 +28,7 @@ const menu = (props) => (
         <MenuObject link="/fundraising">Fundraising</MenuObject>
         <MenuObject link="/sharing">Object Sharing</MenuObject>
         {/* <li><IconButton> <AccountCircleIcon/></IconButton></li> */}
-        <MenuObject link="/profile"><IconButton > <AccountCircleIcon /></IconButton></MenuObject>
+        <MenuObject link="/profile"><IconButton ><AccountCircleIcon /></IconButton></MenuObject>
         <li>
         <Button onClick={() => firebase.auth().signOut()}>Log out</Button>
     </li>

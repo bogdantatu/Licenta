@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios'
 
 import classes from './UserFundraisers.module.css';
-import Fundraiser from '../Fundraiser/Fundraiser'
+import UserFundraiser from './UserFundraiser/UserFundraiser'
 
 
 class Fundraising extends Component{
@@ -32,7 +32,7 @@ class Fundraising extends Component{
 
     render(){
         const fundraisers = this.state.fundraisers.map((fundraiser) => {
-            return <Fundraiser key={fundraiser.id} props={fundraiser}/>
+            return <UserFundraiser key={fundraiser.id} props={fundraiser}/>
         })
        console.log(fundraisers)
         return( 

@@ -1,0 +1,46 @@
+.userFundraiser{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 170px;
+    background-color: #4BA3C3;
+    border-radius:4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin:5px;
+}
+.userFundraiser img{
+    width:150px;
+    height:150px;
+    border-radius:4px;
+}
+.userFundraiserDetails{
+    display:flex;
+    flex-direction: row;
+}
+.Title{
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right:10px;
+    padding-top:3px;
+    margin-right:5vw;
+}
+.Description{
+    font-size: 1.1rem;
+    padding-top:5px;
+}
+
+
+.Buttons{
+    display:flex;
+    flex-direction: row;
+}
+.Status{
+    padding-top:5px;
+    background-color: salmon;
+    border-radius: 10px;
+    width: 4vw;
+    text-align: center;
+    font-weight: bold;
+}

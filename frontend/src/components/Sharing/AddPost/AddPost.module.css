@@ -1,0 +1,63 @@
+.AddPost{
+    width:100%;
+    height: 100%;
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    margin:0 !important;
+}
+.title{
+    padding:10px
+}
+
+.FormContainer{
+    background-color:#4BA3C3;
+    width: 80%;
+    padding-top:20px;
+    border-radius:10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow:column;
+
+}
+
+.Form{
+    display:flex;
+    flex-direction:column;
+    width:80%;
+}
+.Input{
+    margin:5px !important; 
+    font-family: 'Baloo Tammudu 2', cursive !important;
+    background-color: white !important;
+}
+
+
+.btnContainer{
+    padding: 30px;
+    display:flex;
+    flex-flow: row;
+    
+}
+
+.btnAdd{
+    padding-right:20px !important;
+    margin-right:5px !important;
+    font-family: 'Baloo Tammudu 2', cursive !important;
+    background-color: #7cb209 !important;
+    height: 40px;
+}
+
+.btnCancel{
+    padding-right:20px !important;
+    margin-left: 5px !important;
+    font-family: 'Baloo Tammudu 2', cursive !important;
+    background-color: #FF3131 !important;
+    height: 40px;
+}
+.btnAdd span,
+.btnCancel span{
+    padding-top:5px !important;
+}
+

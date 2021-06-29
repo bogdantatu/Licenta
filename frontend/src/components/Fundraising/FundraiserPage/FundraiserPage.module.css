@@ -4,7 +4,7 @@
     padding-top: 20px;
     width: 80%;
     margin: auto;
-    background-color: lightslategray;
+    background-color: #D3D3D3;
     border-radius: 10px;
     margin-bottom:10px;
 }
@@ -33,6 +33,9 @@
     /* padding-left: 200px; */
     padding-top:45px;
     align-self: center;
+}
+.ProgressColor.p-progressbar-value{
+    background-color:#4BA3C3 !important
 }
 .ButtonContainer{
     display:flex;

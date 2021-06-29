@@ -31,7 +31,7 @@ class FundraiserPage extends Component{
                 </div>
                 <div className={classes.Progress}>
                     <h3>Goal status:</h3>
-                    <ProgressBar value={50}/>
+                    <ProgressBar className={classes.ProgressColor} value={50}/>
                     <div className={classes.ButtonContainer}>
                         <div className={classes.btnDonate}>
                             <Button btnType="Donate"><span>Donate</span></Button>

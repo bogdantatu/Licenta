@@ -9,7 +9,7 @@ class SharingList extends Component{
         return(
             <div>
                 <Sharing 
-                    // clickedAdd={() => this.props.history.replace('/addfundraiser')}
+                    clickedAdd={() => this.props.history.replace('/addpost')}
                     />
             </div>
         )

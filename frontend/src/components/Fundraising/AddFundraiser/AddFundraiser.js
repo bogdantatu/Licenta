@@ -4,8 +4,6 @@ import { Route } from 'react-router-dom'
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 import axios from 'axios'
 
@@ -125,14 +123,12 @@ class AddFundraiser extends Component {
                     color="primary"
                     size="large"
                     className={classes.btnAdd}
-                    startIcon={<AddCircleIcon/>}
                     onClick={this.addHandler}>Add</Button>
                 <Button
                     variant="contained"
                     color="secondary"
                     size="large"
                     className={classes.btnCancel}
-                    startIcon={<DeleteIcon />}
                     onClick={this.cancelHandler}> Cancel</Button>
                 </div>
             </div>

@@ -19,7 +19,6 @@
     align-items: center;
     justify-content: center;
     flex-flow:column;
-    border: 5px solid salmon;
 
 }
 
@@ -31,7 +30,7 @@
 .Input{
     margin:5px !important; 
     font-family: 'Baloo Tammudu 2', cursive !important;
-    background-color: lightslategray !important;
+    background-color: white !important;
 }
 
 
@@ -43,15 +42,16 @@
 }
 
 .btnAdd{
-    padding-right:50px !important;
+    padding-right:30px !important;
     margin-right:5px !important;
     font-family: 'Baloo Tammudu 2', cursive !important;
+    background-color: #7cb209 !important
 }
 
 .btnCancel{
     padding-right:20px !important;
     margin-left: 5px !important;
     font-family: 'Baloo Tammudu 2', cursive !important;
-
+    background-color: maroon !important;
 }
 

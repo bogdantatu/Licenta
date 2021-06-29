@@ -10,7 +10,7 @@ class FundraisingList extends Component{
             <div>
                 <Fundraising 
                     clickedAdd={() => this.props.history.replace('/addfundraiser')}
-                    // clickedView={}
+                    clickedView={() => this.props.history.replace('/myfundraisers')}
                     />
             </div>
         )

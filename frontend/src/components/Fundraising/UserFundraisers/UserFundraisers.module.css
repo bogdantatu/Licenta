@@ -1,0 +1,30 @@
+.Fundraising{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 50em;
+    background-color: lightslategray;
+    margin: 10px 10em 0px 10em;
+    border-radius:10px;
+    border:1px;
+
+}
+
+.btnContainer{
+    height:10%;
+    display:flex;
+    justify-content: space-evenly;
+    width: 30%;
+}
+
+
+.btnView{
+    background-color: salmon!important;
+    width: 100%;
+    border-radius: 0 0 10px 10px !important;
+}
+
+.Fundraisers{
+    width:100%;
+    padding:50px 20px 10px 20px;
+}

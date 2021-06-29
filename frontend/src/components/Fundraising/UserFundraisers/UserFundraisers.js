@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
 
@@ -28,6 +27,10 @@ class Fundraising extends Component{
             .catch(err => console.log(err));
     }
 
+    handleClick = () => {
+        this.props.history.replace('/fundraising')
+    }
+
     render(){
         const fundraisers = this.state.fundraisers.map((fundraiser) => {
             return <Fundraiser key={fundraiser.id} props={fundraiser}/>
@@ -39,7 +42,7 @@ class Fundraising extends Component{
                 <Button 
                     className={classes.btnView}
                     startIcon={<VisibilityIcon/>}
-                    onClick={this.props.clickedView}>
+                    onClick={this.handleClick}>
                     View all campaigns
                 </Button>
             </div>

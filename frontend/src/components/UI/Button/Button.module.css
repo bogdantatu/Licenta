@@ -22,3 +22,26 @@
 .Donate{
     background-color: #7cb209;
 }
+
+.ChangePass{
+    background-color:transparent;
+    color: black;
+    border-radius:4px;   
+    padding: 0;
+    width: 80%;
+}
+.SignOut{
+    background-color: transparent;
+    color:black;
+    border-radius:4px;
+    padding: 0;
+    width: 80%;
+
+}
+.DeleteAccount{
+    background-color: tomato;
+    color:black;
+    border-radius:4px;
+    padding: 0;
+    width: 80%;
+}

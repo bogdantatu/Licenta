@@ -27,7 +27,6 @@ class Sharing extends Component{
                         img="https://www.ronexprod.ro/galerie/Contemporan/Dormitor/1-Dormitor%20Corso/Dulap%20%202%20usi.JPG"
                         title="Dulap din stejar"
                         user="Popescu Marin"
-
                         />
                         <Post 
                         img="https://s13emagst.akamaized.net/products/22603/22602679/images/res_10c6ea1ecb5662e42e2819d0d8d4598a.jpg"

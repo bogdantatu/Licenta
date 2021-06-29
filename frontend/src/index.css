@@ -20,3 +20,26 @@ code {
   font-family: 'Baloo Tammudu 2', cursive;
 }
 
+
+.tab-list {  
+  padding-left: 0;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid #D9C5B2;
+  padding-bottom: 15px;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding:10px;
+  margin-top:15px;
+  cursor:pointer
+}
+
+.tab-list-active {
+  background-color: #4BA3C3;
+  border-radius:4px;
+}

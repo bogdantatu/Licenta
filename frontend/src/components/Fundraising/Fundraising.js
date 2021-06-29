@@ -38,12 +38,12 @@ class Fundraising extends Component{
                 <Button 
                     className={classes.btnAdd}
                     onClick={this.props.clickedAdd}>
-                    Create a fundraiser
+                    <span>Create a fundraiser</span>
                 </Button>
                 <Button 
                     className={classes.btnView}
                     onClick={this.props.clickedView}>
-                    View your campaigns
+                   <span>View your campaigns</span>
                 </Button>
             </div>
             <div className={classes.Fundraisers}>

@@ -11,7 +11,7 @@
 }
 
 .btnContainer{
-    height:10%;
+    height:8%;
     display:flex;
     justify-content: space-evenly;
     width: 30%;
@@ -22,6 +22,10 @@
     background-color: salmon!important;
     width: 100%;
     border-radius: 0 0 10px 10px !important;
+}
+.btnView span{
+    padding-top: 5px !important;
+    font-size: 1rem;
 }
 
 .Fundraisers{

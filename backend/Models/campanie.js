@@ -7,21 +7,21 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
         },
         titlu: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [3, 50]
             }
         },
         descriereScurta: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 100]
+                len: [1, 200]
             }
         },
         descriere: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1, 500]
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
         },
         dateContact: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [3, 100]

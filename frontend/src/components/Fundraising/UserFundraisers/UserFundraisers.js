@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 
 
 import axios from 'axios'
@@ -41,9 +40,8 @@ class Fundraising extends Component{
             <div className={classes.btnContainer}>
                 <Button 
                     className={classes.btnView}
-                    startIcon={<VisibilityIcon/>}
                     onClick={this.handleClick}>
-                    View all campaigns
+                    <span>View all campaigns</span>
                 </Button>
             </div>
             <div className={classes.Fundraisers}>

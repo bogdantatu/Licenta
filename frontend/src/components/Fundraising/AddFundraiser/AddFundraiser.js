@@ -123,13 +123,13 @@ class AddFundraiser extends Component {
                     color="primary"
                     size="large"
                     className={classes.btnAdd}
-                    onClick={this.addHandler}>Add</Button>
+                    onClick={this.addHandler}><span>Add</span></Button>
                 <Button
                     variant="contained"
                     color="secondary"
                     size="large"
                     className={classes.btnCancel}
-                    onClick={this.cancelHandler}> Cancel</Button>
+                    onClick={this.cancelHandler}><span>Cancel</span></Button>
                 </div>
             </div>
             <Route 

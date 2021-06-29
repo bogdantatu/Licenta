@@ -3,9 +3,10 @@
     background-color:#D3D3D3;
     border-radius:10px;
     cursor:pointer;
+    border: 1px solid #4BA3C3;
 }
 
-img{
+.Image img{
     width:250px;
     height:250px;
     border-radius: 10px 10px 0 0;
@@ -14,4 +15,11 @@ img{
     display:flex;
     justify-content: space-between;
     padding:8px;
+
+}
+.Title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 7vw;
 }

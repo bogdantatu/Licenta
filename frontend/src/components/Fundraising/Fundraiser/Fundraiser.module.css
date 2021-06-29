@@ -3,25 +3,33 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height: 170px;
     background-color: #4BA3C3;
     border-radius:4px;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin:5px;
 }
-
+.Fundraiser img{
+    width:150px;
+    height:150px;
+    border-radius:4px;
+}
 .FundraiserDetails{
     display:flex;
     flex-direction: row;
-    margin-left:-20px;
+
 }
 .Title{
     font-size: 1.3rem;
     font-weight: bold;
     margin-right:10px;
+    padding-top:3px;
+    margin-right:10vw;
 }
 .Description{
     font-size: 1.1rem;
+    padding-top:5px;
 }
 .FundraiserViewMore{
 
@@ -33,4 +41,7 @@
 
 .btnViewMore{
     background-color: salmon!important;
+}
+.btnViewMore span{
+    padding-top:5px !important;
 }

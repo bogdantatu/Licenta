@@ -10,8 +10,15 @@
     font-weight: bold;
     border-radius: 40px;
     width:150px;
+    display:flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .Button:first-of-type {
     margin-left: 0;
+}
+
+.Donate{
+    background-color: #7cb209;
 }

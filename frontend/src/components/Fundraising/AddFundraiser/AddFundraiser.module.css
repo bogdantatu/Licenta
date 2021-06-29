@@ -42,16 +42,22 @@
 }
 
 .btnAdd{
-    padding-right:30px !important;
+    padding-right:20px !important;
     margin-right:5px !important;
     font-family: 'Baloo Tammudu 2', cursive !important;
-    background-color: #7cb209 !important
+    background-color: #7cb209 !important;
+    height: 40px;
 }
 
 .btnCancel{
     padding-right:20px !important;
     margin-left: 5px !important;
     font-family: 'Baloo Tammudu 2', cursive !important;
-    background-color: maroon !important;
+    background-color: #FF3131 !important;
+    height: 40px;
+}
+.btnAdd span,
+.btnCancel span{
+    padding-top:5px !important;
 }
 

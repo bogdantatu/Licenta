@@ -33,13 +33,13 @@ class FundraiserPage extends Component{
                     <h3>Goal status:</h3>
                     <ProgressBar value={50}/>
                     <div className={classes.ButtonContainer}>
-                    <div className={classes.Button}>
-                        <Button><span>Donate</span></Button>
+                        <div className={classes.btnDonate}>
+                            <Button btnType="Donate"><span>Donate</span></Button>
+                        </div>
+                        <div className={classes.btnShare}>
+                            <Button><span>Share</span></Button>
+                        </div>
                     </div>
-                    <div className={classes.btnShare}>
-                    <Button><span>Share</span></Button>
-                    </div>
-                </div>
                 </div>
                
             </div>

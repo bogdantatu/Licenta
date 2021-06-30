@@ -3,7 +3,7 @@
     align-items: center;
     flex-direction: column;
     height: 50em;
-    background-color: #D3D3D3;
+    background-color: #4BA3C3;
     margin: 10px 10em 0px 10em;
     border-radius:10px;
     border:1px;
@@ -20,7 +20,7 @@
 }
 
 .btnAdd{
-    background-color:#4BA3C3 !important;
+    background-color:#7cb209 !important;
     border-right: 0.5px solid black !important;
     width: 50%;
     border-radius: 0 0 0 10px !important;
@@ -32,7 +32,7 @@
 }
 
 .btnView{
-    background-color: salmon!important;
+    background-color: tomato!important;
     border-left: 0.5px solid black !important;
     width: 50%;
     border-radius: 0 0 10px 0 !important;

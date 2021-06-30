@@ -8,13 +8,13 @@
 
 .ProfileLeft{
     border: 1px solid #4BA3C3;
-    border-radius: 4px 0 4px 4px;
+    border-radius: 4px;
     margin-left: 5vw;
     background-color: #4BA3C3;
     padding:10px;
     width: 20%;
     height:100%;
-    z-index:900;
+
 }
 
 .ProfileLeft .ProfilePhoto{
@@ -58,19 +58,22 @@
 .ProfileRight{
     width: 80%;
     height:100%;
-    background-color:#F4A261;
+    background-color:#4BA3C3;
     margin-right:5vw;
-    margin-left: -10px;
-    z-index:1;
+    margin-left: 2vw;
     border-radius: 4px;
-;
-}
-
-.ProfileRight .ProfileRightOptions{
-    font-size:1.2rem;
 }
 
 .ProfileRight .ProfileRightOptions .Fundraisers,
 .ProfileRight .ProfileRightOptions .Posts{
-    margin-left: 1vw;
+    margin: 1vw;
+}
+.ProfileRight .ProfileRightOptions .Posts{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.ProfileRight .ProfileRightOptions .Posts img{
+    width: 265px;
 }

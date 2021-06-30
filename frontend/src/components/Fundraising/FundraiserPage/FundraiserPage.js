@@ -37,7 +37,7 @@ class FundraiserPage extends Component{
                             <Button btnType="Donate"><span>Donate</span></Button>
                         </div>
                         <div className={classes.btnShare}>
-                            <Button><span>Share</span></Button>
+                            <Button btnType="Share"><span>Share</span></Button>
                         </div>
                     </div>
                 </div>

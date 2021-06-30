@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     height: 170px;
-    background-color: #4BA3C3;
+    background-color: #D3D3D3;
     border-radius:4px;
     padding-left: 10px;
     padding-right: 10px;
@@ -38,7 +38,7 @@
 }
 .Status{
     padding-top:5px;
-    background-color: salmon;
+    background-color: tomato;
     border-radius: 10px;
     width: 4vw;
     text-align: center;

@@ -25,21 +25,23 @@ code {
   padding-left: 0;
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   border-bottom: 1px solid #D9C5B2;
-  padding-bottom: 15px;
 }
 
 .tab-list-item {
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
-  padding:10px;
-  margin-top:15px;
-  cursor:pointer
+  padding:15px 10px 10px 6px;
+  cursor:pointer;
+  background-color: #F5FAFA;
+  border-radius: 10px;
+  margin: 5px;
+
 }
 
 .tab-list-active {
-  background-color: #4BA3C3;
-  border-radius:4px;
+  background-color: tomato ;
+  border-radius:10px;
 }

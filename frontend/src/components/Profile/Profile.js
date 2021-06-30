@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 
 import classes from './Profile.module.css';
 
-import firebase from '../../firebase'
 import Button from '../UI/Button/Button'
 import Tabs from "../UI/Tabs//Tabs"; 
 
 import Post from '../Sharing/Post/Post'
 import Fundraiser from '../Fundraising/Fundraiser/Fundraiser'
+
+import firebase from '../../firebase'
 import axios from 'axios'
 
 
@@ -50,7 +51,7 @@ class Profile extends Component{
                  </div>
                  <div className={classes.ProfileOptions}>
                      <Button btnType="ChangePass">Change your password</Button>
-                     <Button btnType="SignOut" onClick={() => firebase.auth().signOut()}>Sign out</Button>
+                     <Button btnType="SignOut" clicked={() => firebase.auth().signOut()}>Sign out</Button>
                      <Button btnType="DeleteAccount"><span>Delete your account</span></Button>
                  </div>
             </div>

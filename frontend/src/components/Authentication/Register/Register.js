@@ -10,6 +10,7 @@ import Button from '../../UI/Button/Button'
 
 import firebase from '../../../firebase';
 import axios from 'axios';
+import Logo from '../../../assets/Images/Logo.svg'
 
 
 class Register extends Component{
@@ -94,8 +95,7 @@ class Register extends Component{
             </div>
             <div className={classes.RegisterLeft}>
                 <div className={classes.RegisterLeftWrapper}>
-                    <p>logo</p>
-                    <h1>Denumire Aplicatie</h1>
+                    <img src={Logo} alt=""></img>
                 </div>
             </div>
             <Route 

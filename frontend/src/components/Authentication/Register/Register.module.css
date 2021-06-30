@@ -250,6 +250,9 @@
     .Login{
         display:flex;
         align-items:center;
-        margin-top:20px;
+        margin-top:10vh;
+    }
+ Button{
+        margin-left:10px !important;
     }
 }

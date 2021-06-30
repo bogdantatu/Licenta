@@ -9,6 +9,8 @@ import axios from 'axios';
 
 import classes from './Login.module.css';
 import Button from '../../UI/Button/Button'
+import Logo from '../../../assets/Images/Logo.svg'
+
 
 class Login extends Component{    
     constructor(props) {
@@ -56,9 +58,7 @@ class Login extends Component{
         <div className={classes.Section}>
                 <div className={classes.LoginLeft}>
                     <div className={classes.LoginLeftWrapper}>
-                        <p>logo</p>
-                        <h1>Denumire Aplicatie</h1>
-                        <p>Let's help other people</p>
+                        <img src={Logo} alt=""></img>
                     </div>
                 </div>
                 <div className={classes.LoginRight}>

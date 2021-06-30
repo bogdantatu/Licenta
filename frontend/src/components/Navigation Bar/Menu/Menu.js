@@ -9,9 +9,10 @@ import SearchIcon from '@material-ui/icons/Search';
 import classes from './Menu.module.css';
 import MenuObject from './MenuObject/MenuObject'
 
+
 const menu = (props) => (
     <ul className={classes.Menu}>
-        <li>
+          <li>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

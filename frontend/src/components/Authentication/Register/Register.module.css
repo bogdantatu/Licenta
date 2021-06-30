@@ -252,7 +252,7 @@
         align-items:center;
         margin-top:10vh;
     }
- Button{
+ .Section Button{
         margin-left:10px !important;
     }
 }

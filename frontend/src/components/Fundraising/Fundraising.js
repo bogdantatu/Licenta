@@ -37,6 +37,7 @@ class Fundraising extends Component{
             return <Fundraiser key={fundraiser.id} props={fundraiser}/>
         })
         const isModerator = this.props.loggedUser.isModerator
+        console.log(this.props.loggedUser);
         return( 
         <div className={classes.Fundraising}>
             <div className={classes.btnContainer}>
@@ -56,8 +57,8 @@ class Fundraising extends Component{
                     {isModerator ? allFundraisers : fundraisers}
                 </ul>
             </div>
-        </div>)
-
+        </div>
+        )
     }
 }
    

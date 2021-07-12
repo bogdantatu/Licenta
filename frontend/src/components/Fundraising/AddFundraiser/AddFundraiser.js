@@ -17,7 +17,8 @@ class AddFundraiser extends Component {
             shortDescription: "",
             description: "",
             contactData: "",
-            goal: null
+            goal: null,
+            image: ""
         }
     }
   
@@ -27,7 +28,8 @@ class AddFundraiser extends Component {
             descriereScurta: this.state.shortDescription,
             descriere: this.state.description,
             dateContact: this.state.contactData,
-            goal: this.state.goal
+            goal: this.state.goal,
+            imagini: this.state.image
         })
         .then(()=>this.props.history.replace('/fundraising'))
         .then(res => console.log(res))
@@ -49,6 +51,13 @@ class AddFundraiser extends Component {
             <h1 className={classes.title}>Add your fundraising campaign</h1>
             <div className={classes.FormContainer}>
                 <form className={classes.Form}>
+                    <label>Campaign Image</label>
+                    <input 
+                        type="file"
+                        name="image"
+                        value={this.state.image} 
+                        onChange={this.changeHandler}
+                        required/>
                     <label>
                         Campaign Title
                     </label>

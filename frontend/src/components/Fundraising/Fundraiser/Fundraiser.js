@@ -7,12 +7,25 @@ import Button from '@material-ui/core/Button';
 
 import classes from './Fundraiser.module.css';
 
+ 
+
 class Fundraiser extends Component{
     render(){
-        const isModerator = this.props.loggedUser.isModerator
+        const isModerator = this.props.loggedUser.isModerator 
+        const returnedArrayBuffer = this.props.props.imagini
+        // console.log(returnedArrayBuffer)
+        // const newBlob = new Blob([returnedArrayBuffer], { type: 'image/png;base64' });
+        // console.log(newBlob)
+        // const url = URL.createObjectURL(newBlob);
+        // console.log(url)
+
+        console.log(returnedArrayBuffer)
+        const base64 = btoa(returnedArrayBuffer)
+        const url = `"data:image/gif;base64,${base64}"`
+        console.log(url)
         return(
             <div className={classes.Fundraiser}>
-            <img src="https://files.globalgiving.org/pfil/5871/pict_large.jpg?m=1278086819000" alt="imagine"/>
+            <img src={url} alt="imagine"/>
             <div className={classes.FundraiserDetails}>
                 <div className={classes.Title}>{this.props.props.titlu}</div>
                 <div className={classes.Description}>{this.props.props.descriereScurta}</div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 
@@ -29,10 +30,13 @@ class Fundraising extends Component{
 
     render(){
         const activeFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.status === "ACTIVA")
-        console.log(activeFundraisers)
         const fundraisers = activeFundraisers.map((fundraiser) => {
             return <Fundraiser key={fundraiser.id} props={fundraiser}/>
         })
+        const allFundraisers = this.state.fundraisers.map((fundraiser) => {
+            return <Fundraiser key={fundraiser.id} props={fundraiser}/>
+        })
+        const isModerator = this.props.loggedUser.isModerator
         return( 
         <div className={classes.Fundraising}>
             <div className={classes.btnContainer}>
@@ -49,7 +53,7 @@ class Fundraising extends Component{
             </div>
             <div className={classes.Fundraisers}>
                 <ul>
-                    {fundraisers}
+                    {isModerator ? allFundraisers : fundraisers}
                 </ul>
             </div>
         </div>)
@@ -58,4 +62,8 @@ class Fundraising extends Component{
 }
    
 
-export default Fundraising;
+const mapStateToProps = ({user}) => ({
+    loggedUser: user.loggedUser
+  })
+  
+export default connect(mapStateToProps)(Fundraising);

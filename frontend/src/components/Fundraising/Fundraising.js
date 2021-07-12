@@ -22,16 +22,17 @@ class Fundraising extends Component{
         axios.get(`http://localhost:8080/campanie`)
             .then(res => {
                 this.setState({fundraisers: res.data})
-                console.log(res.data)
+                // console.log(res.data)
             })
             .catch(err => console.log(err));
     }
 
     render(){
-        const fundraisers = this.state.fundraisers.map((fundraiser) => {
+        const activeFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.status === "ACTIVA")
+        console.log(activeFundraisers)
+        const fundraisers = activeFundraisers.map((fundraiser) => {
             return <Fundraiser key={fundraiser.id} props={fundraiser}/>
         })
-       console.log(fundraisers)
         return( 
         <div className={classes.Fundraising}>
             <div className={classes.btnContainer}>

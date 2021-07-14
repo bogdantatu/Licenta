@@ -4,17 +4,47 @@ import { withRouter } from 'react-router-dom'
 import { ProgressBar } from 'primereact/progressbar';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.css';
+import axios from "axios"
 
 import Button from '../../UI/Button/Button'
 import classes from './FundraiserPage.module.css';
 
 class FundraiserPage extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            fundraiser: {}
+        }
+    }
+    componentDidMount(){
+        axios.get(`http://localhost:8080/campanie/${this.props.match.params.id}`)
+        .then(res => {
+            this.setState({
+                fundraiser: res.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+    donateHandler = () =>{
+        let updatedFundraiser = this.state.fundraiser;
+        updatedFundraiser.progress += 10
+       
+        this.setState({
+            fundraiser: updatedFundraiser
+        }, () => {
+            axios.put(`http://localhost:8080/campanie/${this.state.fundraiser.id}`, {
+                progress: updatedFundraiser.progress
+            })
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+        })
+    }
     render(){
         return(
             <div className={classes.FundraiserPage}>
                 <div className={classes.TitleArea}>
-                    <h1>Save the Whales</h1>
-                    <h3>We're creating this campaign to raise funds for the whales</h3>
+                    <h1>{this.state.fundraiser.titlu}</h1>
+                    <h3>{this.state.fundraiser.descriereScurta}</h3>
                 </div>
                 <div className={classes.Details}>
                     <div>
@@ -22,19 +52,22 @@ class FundraiserPage extends Component{
                     </div>
                     <div>
                         <h3>Description:</h3>
-                        <p>In order to save as many endagered whales as we can, we need to raise a considerable amount of funds. We will use those funds to reduce ocean pollution!</p>
+                        <p>{this.state.fundraiser.descriere}</p>
                     </div>
                     <div>
                         <h3>Contact: </h3>
-                        <p>Email: whales@ocean.com</p>
+                        <p>{this.state.fundraiser.dateContact}</p>
                     </div>
                 </div>
                 <div className={classes.Progress}>
                     <h3>Goal status:</h3>
-                    <ProgressBar className={classes.ProgressColor} value={50}/>
+                    <ProgressBar className={classes.ProgressColor} unit="$" value={this.state.fundraiser.progress} />
+                    <h3>Goal: {this.state.fundraiser.goal}</h3>
                     <div className={classes.ButtonContainer}>
                         <div className={classes.btnDonate}>
-                            <Button btnType="Donate"><span>Donate</span></Button>
+                            <Button 
+                                btnType="Donate"
+                                clicked={this.donateHandler}><span>Donate</span></Button>
                         </div>
                         <div className={classes.btnShare}>
                             <Button btnType="Share"><span>Share</span></Button>

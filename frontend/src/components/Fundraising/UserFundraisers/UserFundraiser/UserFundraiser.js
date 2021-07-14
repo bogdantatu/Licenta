@@ -31,7 +31,7 @@ class UserFundraiser extends Component{
                 </div>
                 <div className={classes.Buttons}>
                     <div className={classes.ProgressBar}></div>
-                    <div className={classes.Status}>ACTIVE</div>
+                    <div className={classes.Status}>{this.props.props.status}</div>
                     <Button><EditIcon onClick={this.handleEdit}/></Button>
                     <Button><DeleteIcon onClick={this.handleDelete}/></Button>
                 </div>

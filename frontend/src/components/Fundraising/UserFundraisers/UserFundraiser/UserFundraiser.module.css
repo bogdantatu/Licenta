@@ -40,7 +40,9 @@
     padding-top:5px;
     background-color: tomato;
     border-radius: 10px;
-    width: 4vw;
+
     text-align: center;
     font-weight: bold;
+    padding-left:5px;
+    padding-right:5px;
 }

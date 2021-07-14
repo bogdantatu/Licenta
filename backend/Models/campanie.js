@@ -46,14 +46,22 @@ module.exports = (sequelize, DataTypes) => {
                 max: 9999999999
             }
         },
+        progress: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+            validate: {
+                min: 0,
+                max: 9999999999
+            }
+        },
         status: {
             type: DataTypes.STRING(50),
             validate: {
                 isIn: [
-                    ['VRF', 'VRF SUPL', 'RESPINSA', 'ACTIVA', 'INCHEIATA']
+                    ['CHECKING', 'EXTRA INFO', 'REJECTED', 'ACTIVE', 'ENDED']
                 ]
             },
-            defaultValue: 'VRF'
+            defaultValue: 'CHECKING'
         }
     });
 }

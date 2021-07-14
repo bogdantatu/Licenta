@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-
+import {withRouter} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-// import axios from 'axios'
+import axios from 'axios'
 
 
 
@@ -14,13 +14,22 @@ class Fundraiser extends Component{
     constructor(props){
         super(props);
         this.state={
-            status: "VRF"
+            status: "CHECKING"
         }
     }
-    handleChange = (evt) => {
+    handleChange = (evt) => {       
         this.setState({
-            [evt.target.name] : evt.target.value
+            status : evt.target.value
+        }, () => {
+            axios.put(`http://localhost:8080/campanie/${this.props.props.id}`, {
+                status: evt.target.value
+            })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
         })
+    }
+    handleViewMore = () => {
+        this.props.history.push(`/campanie/${this.props.props.id}`)
     }
     render(){
         const isModerator = this.props.loggedUser.isModerator 
@@ -39,22 +48,28 @@ class Fundraiser extends Component{
                         <select 
                             className={classes.statusSelect}
                             onChange={this.handleChange}>
+                                <option>{this.props.props.status}</option>
                                 <option 
-                                    value="VRF SUPL"
-                                    name="VRF SUPL">Extra Info</option>
+                                    value="CHECKING"
+                                    name="CHECKING">CHECKING</option>
                                 <option 
-                                    value="RESPINSA"
-                                    name="RESPINSA">Rejected</option>
+                                    value="EXTRA INFO"
+                                    name="EXTRA INFO">EXTRA INFO</option>
                                 <option 
-                                    value="ACTIVA"
-                                    name="ACTIVA">Active</option>
+                                    value="REJECTED"
+                                    name="REJECTED">REJECTED</option>
                                 <option 
-                                    value="INCHEIATA"
-                                    name="INCHEIATA">Ended</option>
+                                    value="ACTIVE"
+                                    name="ACTIVE">ACTIVE</option>
+                                <option 
+                                    value="ENDED"
+                                    name="ENDED">ENDED</option>
                         </select>
                     </div>
                     : null}
-                <Button className={classes.btnViewMore}>
+                <Button 
+                    className={classes.btnViewMore}
+                    onClick={this.handleViewMore}>
                     <span>View more</span>
                 </Button>
             </div>
@@ -66,4 +81,4 @@ const mapStateToProps = ({user}) => ({
     loggedUser: user.loggedUser
 })
   
-export default connect(mapStateToProps)(Fundraiser);
+export default connect(mapStateToProps)(withRouter(Fundraiser));

@@ -48,11 +48,9 @@ class App extends Component {
               <PrivateRoute component={FundraisingList} path="/fundraising"  exact />
               <PrivateRoute component={UserFundraisers} path="/myfundraisers" exact />
               <PrivateRoute component={AddFundraiser} path="/addfundraiser"  exact />
-              <PrivateRoute component={FundraiserPage} path="/campanie/"  exact />
-
+              <PrivateRoute component={FundraiserPage} path="/campanie/:id"  exact />
               <PrivateRoute component={SharingList} path="/sharing"  exact />
               <PrivateRoute component={AddPost} path="/addpost"  exact />
-
               <PrivateRoute component={ProfilePage} path="/profile" exact />
             </Layout>
           </Switch>

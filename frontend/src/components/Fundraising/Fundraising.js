@@ -28,7 +28,7 @@ class Fundraising extends Component{
     }
 
     render(){
-        const activeFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.status === "ACTIVA")
+        const activeFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.status === "ACTIVE")
         const fundraisers = activeFundraisers.map((fundraiser) => {
             return <Fundraiser key={fundraiser.id} props={fundraiser}/>
         })

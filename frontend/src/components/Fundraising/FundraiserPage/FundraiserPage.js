@@ -28,7 +28,6 @@ class FundraiserPage extends Component{
     donateHandler = () =>{
         let updatedFundraiser = this.state.fundraiser;
         updatedFundraiser.progress += 10
-       
         this.setState({
             fundraiser: updatedFundraiser
         }, () => {
@@ -40,6 +39,7 @@ class FundraiserPage extends Component{
         })
     }
     render(){
+       
         return(
             <div className={classes.FundraiserPage}>
                 <div className={classes.TitleArea}>

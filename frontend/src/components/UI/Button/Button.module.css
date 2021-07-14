@@ -22,9 +22,15 @@
 
 .Donate{
     background-color: #7cb209;
+    height: 50px;
+    padding-top:5px
+
 }
 .Share{
     background-color: tomato;
+    height: 50px;
+    padding-top:5px
+
 }
 .ChangePass{
     background-color:transparent;

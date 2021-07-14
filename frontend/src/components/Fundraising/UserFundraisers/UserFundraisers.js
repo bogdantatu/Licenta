@@ -10,21 +10,28 @@ import classes from './UserFundraisers.module.css';
 import UserFundraiser from './UserFundraiser/UserFundraiser'
 
 
-class UserFundraising extends Component{
+class UserFundraisers extends Component{
     constructor(props){
         super(props)
         this.state = {
-            fundraisers: []
+            fundraisers: [],
+            nrOfFundraisers: 0
         }
+    }
+    
+    getFundraisers = () => {
+        axios.get(`http://localhost:8080/campanie`)
+        .then(res => {
+            this.setState({
+                fundraisers: res.data,
+                nrOfFundraisers: res.data.length
+            })
+        })
+        .catch(err => console.log(err));
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8080/campanie`)
-            .then(res => {
-                this.setState({fundraisers: res.data})
-                console.log(res.data)
-            })
-            .catch(err => console.log(err));
+       this.getFundraisers()
     }
 
     handleClick = () => {
@@ -34,9 +41,8 @@ class UserFundraising extends Component{
     render(){
         const myFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.utilizatorId === this.props.loggedUser.id)
         const fundraisers = myFundraisers.map((fundraiser) => {
-            return <UserFundraiser key={fundraiser.id} props={fundraiser}/>
+            return <UserFundraiser key={fundraiser.id} props={fundraiser} get={this.getFundraisers}/>
         })
-       console.log(fundraisers)
         return( 
         <div className={classes.Fundraising}>
             <div className={classes.btnContainer}>
@@ -60,4 +66,4 @@ const mapStateToProps = ({user}) => ({
     loggedUser: user.loggedUser
   })
   
-export default connect(mapStateToProps)(UserFundraising);
+export default connect(mapStateToProps)(UserFundraisers);

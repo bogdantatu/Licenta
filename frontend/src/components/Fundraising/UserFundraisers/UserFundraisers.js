@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
+import {connect} from 'react-redux';
 
 
 import axios from 'axios'
@@ -9,7 +10,7 @@ import classes from './UserFundraisers.module.css';
 import UserFundraiser from './UserFundraiser/UserFundraiser'
 
 
-class Fundraising extends Component{
+class UserFundraising extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -31,7 +32,8 @@ class Fundraising extends Component{
     }
 
     render(){
-        const fundraisers = this.state.fundraisers.map((fundraiser) => {
+        const myFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.utilizatorId === this.props.loggedUser.id)
+        const fundraisers = myFundraisers.map((fundraiser) => {
             return <UserFundraiser key={fundraiser.id} props={fundraiser}/>
         })
        console.log(fundraisers)
@@ -49,10 +51,13 @@ class Fundraising extends Component{
                     {fundraisers}
                 </ul>
             </div>
-        </div>)
-
+        </div>
+        )
     }
 }
    
-
-export default Fundraising;
+const mapStateToProps = ({user}) => ({
+    loggedUser: user.loggedUser
+  })
+  
+export default connect(mapStateToProps)(UserFundraising);

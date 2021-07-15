@@ -50,13 +50,15 @@ class FundraiserPage extends Component{
                     <div>
                         <img src="https://files.globalgiving.org/pfil/5871/pict_large.jpg?m=1278086819000" alt="imagine"></img>
                     </div>
-                    <div>
-                        <h3>Description:</h3>
-                        <p>{this.state.fundraiser.descriere}</p>
-                    </div>
-                    <div>
-                        <h3>Contact: </h3>
-                        <p>{this.state.fundraiser.dateContact}</p>
+                    <div className={classes.Description}>
+                        <div>
+                            <h3>Description:</h3>
+                            <p>{this.state.fundraiser.descriere}</p>
+                        </div>
+                        <div>
+                            <h3>Contact: </h3>
+                            <p>{this.state.fundraiser.dateContact}</p>
+                        </div>
                     </div>
                 </div>
                 <div className={classes.Progress}>

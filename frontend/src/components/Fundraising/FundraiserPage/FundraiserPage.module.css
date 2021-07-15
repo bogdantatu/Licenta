@@ -20,11 +20,17 @@
 }
 .Details{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-left: 200px;
-    padding-top:50px;
+    padding-top:55px;
     align-content: space-between !important;
 
+}
+.Details .Description{
+    margin-left:20vw;
+}
+.Details .Description div{
+    padding: 20px
 }
 
 .Progress{
@@ -32,7 +38,7 @@
     flex-direction: column;
     width:50%;
     /* padding-left: 200px; */
-    padding-top:30px;
+    margin-top: 15vh;
     align-self: center;
 }
 .Progress .Goal{
@@ -44,6 +50,7 @@
     display:flex;
     flex-direction: row;
     justify-content: center;
+    padding-bottom: 20px;
 }
 .btnDonate{
     display:flex;

@@ -32,7 +32,11 @@
     flex-direction: column;
     width:50%;
     /* padding-left: 200px; */
-    padding-top:45px;
+    padding-top:30px;
+    align-self: center;
+}
+.Progress .Goal{
+    font-size: 1.2rem;
     align-self: center;
 }
 

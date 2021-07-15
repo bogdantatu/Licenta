@@ -27,7 +27,7 @@ class FundraiserPage extends Component{
     }
     donateHandler = () =>{
         let updatedFundraiser = this.state.fundraiser;
-        updatedFundraiser.progress += 10
+        updatedFundraiser.progress += 10 
         this.setState({
             fundraiser: updatedFundraiser
         }, () => {
@@ -62,7 +62,7 @@ class FundraiserPage extends Component{
                 <div className={classes.Progress}>
                     <h3>Goal status:</h3>
                     <ProgressBar className={classes.ProgressColor} unit="$" value={this.state.fundraiser.progress} />
-                    <h3>Goal: {this.state.fundraiser.goal}</h3>
+                    <p className={classes.Goal}>Goal: <b>{this.state.fundraiser.goal}</b></p>
                     <div className={classes.ButtonContainer}>
                         <div className={classes.btnDonate}>
                             <Button 

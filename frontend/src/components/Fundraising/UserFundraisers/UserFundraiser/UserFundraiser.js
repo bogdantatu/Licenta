@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import {withRouter} from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -11,8 +11,8 @@ import classes from './UserFundraiser.module.css';
 
 class UserFundraiser extends Component{
     handleEdit = () =>{
-        console.log("edit")
-    }
+        this.props.history.push(`/editfundraiser/${this.props.props.id}`)
+    }    
 
     handleDelete = () =>{
         axios.delete(`http://localhost:8080/campanie/${this.props.props.id}`)
@@ -40,4 +40,4 @@ class UserFundraiser extends Component{
     }
 }
 
-export default UserFundraiser;
+export default withRouter(UserFundraiser);

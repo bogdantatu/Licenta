@@ -39,6 +39,7 @@
     padding: 0;
     width: 80%;
 }
+
 .SignOut{
     background-color: transparent;
     color:black;
@@ -53,4 +54,10 @@
     border-radius:4px;
     padding: 0;
     width: 80%;
+}
+
+.ChangePass:hover, .ChangePass:active, 
+.SignOut:hover, .SignOut:active, 
+.DeleteAccount:hover, .Delete:active {
+    color: white
 }

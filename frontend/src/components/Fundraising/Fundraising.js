@@ -23,7 +23,6 @@ class Fundraising extends Component{
         axios.get(`http://localhost:8080/campanie`)
             .then(res => {
                 this.setState({fundraisers: res.data})
-                console.log(res.data)
             })
             .catch(err => console.log(err));
     }

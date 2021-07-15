@@ -19,11 +19,11 @@ const Utilizator = require('./utilizator')(sequelize, Sequelize)
 /* Constraints START */
 
 Anunt.belongsTo(Utilizator)
-Utilizator.hasMany(Anunt)
+Utilizator.hasMany(Anunt, {onDelete: 'CASCADE', hooks: true})
 Obiect.belongsTo(Anunt)
 Anunt.hasOne(Obiect)
 Obiect.belongsTo(Utilizator)
-Utilizator.hasMany(Obiect)
+Utilizator.hasMany(Obiect, {onDelete: 'CASCADE', hooks: true})
 
 Anunt.hasMany(Mesaj, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
 Utilizator.hasMany(Mesaj, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
@@ -31,7 +31,7 @@ Mesaj.belongsTo(Anunt)
 
 
 Campanie.belongsTo(Utilizator)
-Utilizator.hasMany(Campanie)
+Utilizator.hasMany(Campanie, {onDelete: 'CASCADE', hooks: true})
 Campanie.hasMany(Donatie, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
 Utilizator.hasMany(Donatie, {foreignKey: {allowNull: false}, onDelete: 'CASCADE', hooks: true})
 

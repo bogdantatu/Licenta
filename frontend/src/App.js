@@ -55,7 +55,7 @@ class App extends Component {
               <PrivateRoute component={SharingList} path="/sharing"  exact />
               <PrivateRoute component={AddPost} path="/addpost"  exact />
               <PrivateRoute component={ProfilePage} path="/profile" exact />
-              <PrivateRoute component={SearchFundraising} path="/search/find=?:keyword" exact />
+              <PrivateRoute component={SearchFundraising} path="/search/?filter=:keyword" exact />
             </Layout>
           </Switch>
         </Aux> 

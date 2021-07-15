@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -17,8 +18,10 @@ class Menu extends Component{
       keyword: ""
     }
   }
-  handleChange = () => {
-    this.props.history.push(`/search=${this.state.keyword}`)
+  handleChange = (evt) => {
+      this.setState({
+          keyword : evt.target.value
+      }, () => this.props.history.push(`/search/?filter=${this.state.keyword}`))
   }
     render(){
       return(
@@ -34,6 +37,7 @@ class Menu extends Component{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              name="keyword"
               onChange={this.handleChange}
               value={this.state.keyword}/>
           </div>
@@ -46,4 +50,4 @@ class Menu extends Component{
     }
 } 
   
-export default Menu;
+export default withRouter(Menu);

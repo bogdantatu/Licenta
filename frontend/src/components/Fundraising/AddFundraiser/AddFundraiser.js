@@ -17,7 +17,7 @@ class AddFundraiser extends Component {
             shortDescription: "",
             description: "",
             contactData: "",
-            goal: null,
+            goal: "",
             image: ""
         }
     }
@@ -32,7 +32,6 @@ class AddFundraiser extends Component {
             imagini: this.state.image
         })
         .then(()=>this.props.history.replace('/fundraising'))
-        .then(res => console.log(res))
         .catch(err => alert(err))
     }
 

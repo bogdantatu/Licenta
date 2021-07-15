@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         goal: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 min: 0,

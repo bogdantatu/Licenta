@@ -20,6 +20,7 @@ import UserFundraisers from './components/Fundraising/UserFundraisers/UserFundra
 import EditFundraiser from './components/Fundraising/FundraiserPage/EditFundraiser/EditFundraiser'
 import SharingList from './containers/Sharing/SharingList';
 import AddPost from './components/Sharing/AddPost/AddPost';
+import SearchFundraising from './components/Search/SearchFundraising/SearchFundraising';
 
 class App extends Component {
 
@@ -54,6 +55,7 @@ class App extends Component {
               <PrivateRoute component={SharingList} path="/sharing"  exact />
               <PrivateRoute component={AddPost} path="/addpost"  exact />
               <PrivateRoute component={ProfilePage} path="/profile" exact />
+              <PrivateRoute component={SearchFundraising} path="/search/find=?:keyword" exact />
             </Layout>
           </Switch>
         </Aux> 

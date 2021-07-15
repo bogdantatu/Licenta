@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -10,8 +10,19 @@ import classes from './Menu.module.css';
 import MenuObject from './MenuObject/MenuObject'
 
 
-const menu = (props) => (
-    <ul className={classes.Menu}>
+class Menu extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      keyword: ""
+    }
+  }
+  handleChange = () => {
+    this.props.history.push(`/search=${this.state.keyword}`)
+  }
+    render(){
+      return(
+        <ul className={classes.Menu}>
           <li>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -22,12 +33,17 @@ const menu = (props) => (
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
-              }}/>
+              }}
+              onChange={this.handleChange}
+              value={this.state.keyword}/>
           </div>
         </li>
         <MenuObject link="/fundraising">Fundraising</MenuObject>
         <MenuObject link="/sharing">Object Sharing</MenuObject>
         <MenuObject link="/profile"><IconButton ><AccountCircleIcon /></IconButton></MenuObject>
     </ul>
-);
-export default menu;
+      )
+    }
+} 
+  
+export default Menu;

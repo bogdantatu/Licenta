@@ -13,29 +13,42 @@ class FundraiserPage extends Component{
     constructor(props){
         super(props)
         this.state = {
-            fundraiser: {}
+            fundraiser: {},
+            progress: 0,
+            donation: 0
         }
     }
     componentDidMount(){
         axios.get(`http://localhost:8080/campanie/${this.props.match.params.id}`)
         .then(res => {
             this.setState({
-                fundraiser: res.data
+                fundraiser: res.data,
+                progress: (res.data.progress * 100 / res.data.goal).toFixed(2)
             })
         })
         .catch(err => console.log(err))
     }
+
     donateHandler = () =>{
         let updatedFundraiser = this.state.fundraiser;
-        updatedFundraiser.progress += 10 
+        let donation = this.state.donation
+        updatedFundraiser.progress += +donation
         this.setState({
-            fundraiser: updatedFundraiser
+            fundraiser: updatedFundraiser,
+            progress: (updatedFundraiser.progress * 100 / updatedFundraiser.goal).toFixed(2)
         }, () => {
             axios.put(`http://localhost:8080/campanie/${this.state.fundraiser.id}`, {
                 progress: updatedFundraiser.progress
             })
-            .then(res => console.log(res.data))
             .catch(err => console.log(err))
+        })
+        this.setState({
+            donation: 0
+        })
+    }
+    changeHandler = (evt) => {
+        this.setState({
+            [evt.target.name] : evt.target.value
         })
     }
     render(){
@@ -63,8 +76,17 @@ class FundraiserPage extends Component{
                 </div>
                 <div className={classes.Progress}>
                     <h3>Goal status:</h3>
-                    <ProgressBar className={classes.ProgressColor} unit="$" value={this.state.fundraiser.progress} />
+                    <ProgressBar className={classes.ProgressColor} unit="%" value={this.state.progress} />
                     <p className={classes.Goal}>Goal: <b>{this.state.fundraiser.goal}</b></p>
+                        <div className={classes.Input}>
+                            <p><b>Donate something:</b> </p><input 
+                                className={classes.Donation}
+                                type="number" 
+                                value={this.state.donation}
+                                name="donation"
+                                onChange={this.changeHandler}/>
+                                <p><b>$</b></p>
+                        </div>
                     <div className={classes.ButtonContainer}>
                         <div className={classes.btnDonate}>
                             <Button 

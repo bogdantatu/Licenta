@@ -27,7 +27,7 @@
 
 }
 .Details .Description{
-    margin-left:20vw;
+    margin-left:15vw;
 }
 .Details .Description div{
     padding: 20px
@@ -38,11 +38,11 @@
     flex-direction: column;
     width:50%;
     /* padding-left: 200px; */
-    margin-top: 15vh;
+    margin-top: 10vh;
     align-self: center;
 }
 .Progress .Goal{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     align-self: center;
 }
 
@@ -51,6 +51,35 @@
     flex-direction: row;
     justify-content: center;
     padding-bottom: 20px;
+}
+.Progress .Input{
+    display:flex;
+    justify-content: center;
+    padding-bottom:10px;
+
+}
+.Progress .Donation{
+    height: 30px;
+    align-self:center;
+    width: 8vw;
+    margin-right:5px;
+    border-radius:4px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:5px;
+    font-size:1.1rem;
+
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.Progress p{
+    align-self:center;
+    margin-right:10px;
+    padding-top:4px;
+    /* font-weight: bold; */
 }
 .btnDonate{
     display:flex;

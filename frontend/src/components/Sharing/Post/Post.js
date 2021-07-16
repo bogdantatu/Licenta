@@ -1,20 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import classes from './Post.module.css';
+import axios from 'axios'
 
-const post = (props) => (
-    <div onClick={props.clicked} className={classes.Post}>
-        <div className={classes.Image}>
-            <img src={props.img} alt=""></img>
-        </div>
-        <div className={classes.Details}>
-            <div className={classes.Title}>
-                {props.title}
+class Post extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            userName: "",
+            imagini:""
+        }
+    }
+    
+    componentDidMount(){
+        axios.get(`http://localhost:8080/utilizator/${this.props.props.utilizatorId}`)
+        .then(res => {
+            this.setState({
+                userName: res.data.userName
+            })
+        })
+        .catch(err => console.log(err))
+        axios.get(`http://localhost:8080/obiect/${this.props.props.id}`)
+                    .then(res => {
+                        this.setState({
+                            imagini: res.data.imagini
+                        })
+                    })
+                    .catch(err => console.log(err))
+    }
+    render(){
+        return(
+        <div onClick={this.props.clicked} className={classes.Post}>
+            <div className={classes.Image}>
+                <img src={this.state.imagini} alt=""></img>
             </div>
-            <div className={classes.User}>
-                {props.user}
+            <div className={classes.Details}>
+                <div className={classes.Title}>
+                    {this.props.props.titlu}
+                </div>
+                <div className={classes.User}>
+                    {this.state.userName}
+                </div>
             </div>
         </div>
-    </div>
-);
-export default post;
+        )
+    }
+} 
+    
+
+export default Post;

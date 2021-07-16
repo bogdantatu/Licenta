@@ -5,7 +5,7 @@ let router = express.Router();
 /**
  * Router for post endpoint
  */
-
+ router.get("/", controller.searchAnunt)
  router.put('/:id_anunt/:id_winner', controller.inchideAnunt)
  router.get("/",controller.getAnunturi)
  router.get("/:id",controller.getAnunt)

@@ -41,7 +41,9 @@ exports.getObiect = async (req, res, next) => {
             res.status(400).json({message: 'ID-ul trebuie sa fie numar'})
         }
         else{
-            const obiect = await Models.Obiect.findByPk(id)
+
+            const obiect = await Models.Obiect.findOne({ where: { anuntId: id } });
+            // const obiect = await Models.Obiect.findByPk(id)
             if(obiect)
             res.status(200).json(obiect);
             else{

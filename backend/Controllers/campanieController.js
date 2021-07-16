@@ -23,24 +23,7 @@ exports.getCampanii = async (req, res, next) => {
     }
 }
 
-exports.getCampanieByTitle = async (req, res, next) => {
-    const query = {
-        where: {}
-    }
-    if(req.query.filter){
-        query.where.titlu = {
-            [Op.startsWith]: `%${req.query.filter}%`,
-            [Op.like]: `%${req.query.filter}%`,
-            [Op.iLike]: `%${req.query.filter}%`
-        }
-    }
-    try {
-        const campanii = await Models.Campanie.findAll(query)
-        res.status(200).json(campanii)
-    } catch (error) {
-        next(error)
-    }
-}
+
 
 /**
  * Function handling the GET request for one fundraising

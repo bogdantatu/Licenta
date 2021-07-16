@@ -11,7 +11,7 @@ class Search extends Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8080/campanie/?filter=${this.props.match.params.keyword}`)
+        axios.get(`http://localhost:8080/anunt/?filter=${this.props.match.params.keyword}`)
         .then(res => console.log(res.data))
         .catch(err => console.log(err))
     }

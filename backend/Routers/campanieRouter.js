@@ -5,7 +5,6 @@ let router = express.Router();
 /**
  * Router for fundraising endpoint
  */
- router.get("/", controller.getCampanieByTitle)
  router.get("/:id",controller.getCampanie)
  router.get("/",controller.getCampanii)
  router.post('/:id_utilizator',controller.postCampanie)

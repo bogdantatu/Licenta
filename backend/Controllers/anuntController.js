@@ -55,6 +55,25 @@ exports.getAnunt = async (req, res, next) => {
     }
 }
 
+exports.searchAnunt = async (req, res, next) => {
+    const query = {
+        where: {}
+    }
+    if(req.query.filter){
+        query.where.titlu = {
+            [Op.startsWith]: `%${req.query.filter}%`,
+            [Op.like]: `%${req.query.filter}%`,
+            [Op.iLike]: `%${req.query.filter}%`
+        }
+    }
+    try {
+        const anunturi = await Models.Anunt.findAll(query)
+        res.status(200).json(anunturi)
+    } catch (error) {
+        next(error)
+    }
+}
+
 /**
  * Function handling the POST request for a post
  *

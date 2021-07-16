@@ -64,12 +64,12 @@
     border-radius: 4px;
 }
 
-.ProfileRight .ProfileRightOptions .Fundraisers,
-.ProfileRight .ProfileRightOptions .Posts{
+.ProfileRight .ProfileRightOptions .Fundraisers{
     margin: 1vw;
     overflow-y:auto;
     height: 42em;
 }
+
 .ProfileRight .ProfileRightOptions .Posts{
     display:flex;
     flex-direction: row;

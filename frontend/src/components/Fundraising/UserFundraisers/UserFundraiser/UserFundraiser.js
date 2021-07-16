@@ -36,7 +36,7 @@ class UserFundraiser extends Component{
                     <div className={classes.ProgressBar}></div>
                     <div className={classes.Status}>{this.props.props.status}</div>
                     <Button><EditIcon onClick={this.handleEdit}/></Button>
-                    <Button><DeleteIcon onClick={this.handleDelete}/></Button>
+                    <Button><DeleteIcon onClick={this.handleDelete} color="error"/></Button>
                 </div>
             </div>
         )

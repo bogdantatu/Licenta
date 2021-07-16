@@ -1,0 +1,32 @@
+.Post{
+    margin:15px;
+    background-color:#D3D3D3;
+    border-radius:10px;
+    cursor:pointer;
+    border: 1px solid #4BA3C3;
+}
+
+.Image img{
+    width:250px;
+    height:28.153153153153152vh;
+    border-radius: 10px 10px 0 0;
+}
+.Details{
+    display:flex;
+    justify-content: space-between;
+    padding:8px;
+
+}
+.Title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 7vw;
+}
+
+.ButtonContainer{
+    display:flex;
+    justify-content: center;
+    padding:5px 0px 10px 0px;
+    border-top: 1px solid #4BA3C3;
+}

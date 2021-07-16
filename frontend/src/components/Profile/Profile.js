@@ -6,7 +6,7 @@ import classes from './Profile.module.css';
 import Button from '../UI/Button/Button'
 import Tabs from "../UI/Tabs//Tabs"; 
 
-import Post from '../Sharing/Post/Post'
+import MyPost from '../Sharing/MyPosts/MyPost'
 import UserFundraiser from '../Fundraising/UserFundraisers/UserFundraiser/UserFundraiser'
 
 import firebase from '../../firebase'
@@ -20,8 +20,9 @@ class Profile extends Component{
         super(props)
         this.state = {
             fundraisers: [],
-            nrOfFundraisers: 0
-
+            nrOfFundraisers: 0,
+            posts: [],
+            nrOfPosts: 0
         }
     }
     getFundraisers = () => {
@@ -34,8 +35,19 @@ class Profile extends Component{
         })
         .catch(err => console.log(err));
     }
+    getPosts =() => {
+        axios.get(`http://localhost:8080/anunt`)
+        .then(res => {
+            this.setState({
+                posts: res.data,
+                nrOfPosts: res.data.length
+            })
+        })
+        .catch(err => console.log(err))
+    }
     componentDidMount() {
         this.getFundraisers()
+        this.getPosts()
     }
 
     handleDeleteUser = () => {
@@ -48,6 +60,9 @@ class Profile extends Component{
         const myFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.utilizatorId === this.props.loggedUser.id)
         const fundraisers = myFundraisers.map((fundraiser) => {
             return <UserFundraiser key={fundraiser.id} props={fundraiser} get={this.getFundraisers}/>
+        })
+        const posts = this.state.posts.map((post) => {
+            return <MyPost key={post.id} props={post} get={this.getPosts}/>
         })
         return(
             <div className={classes.Profile}>
@@ -82,10 +97,7 @@ class Profile extends Component{
                              </div>
                              <div label="Your Donations"> 
                                 <div className={classes.Posts}>
-                                    <Post 
-                                        img="https://lcdn.altex.ro/resize/media/catalog/product/a/7/2bd48d28d1c32adea0e55139a4e6434a/a7b4d03332cc3a5705222b709e0754ea_131044_2_34040d46.jpg"
-                                        title="Masina de spalat"
-                                        user="DonatorulAnonim" />
+                                    {posts}
                                 </div>
                              </div>
                          </Tabs>

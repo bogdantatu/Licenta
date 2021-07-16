@@ -26,7 +26,7 @@ class Sharing extends Component{
     }
     render(){
         const posts = this.state.posts.map((post) => {
-            return <Post key={post.id} props={post}/>
+            return <Post key={post.id} props={post} />
         })
         return(
             <div>

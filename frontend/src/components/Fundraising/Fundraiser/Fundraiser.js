@@ -44,7 +44,8 @@ class Fundraiser extends Component{
             <div className={classes.FundraiserViewMore}>
                 <div className={classes.ProgressBar}></div>
                 {isModerator ?  
-                    <div>
+                    <div className={classes.ModeratorView}>
+                        <h4>{this.props.loggedUser.userName}</h4>
                         <select 
                             className={classes.statusSelect}
                             onChange={this.handleChange}>

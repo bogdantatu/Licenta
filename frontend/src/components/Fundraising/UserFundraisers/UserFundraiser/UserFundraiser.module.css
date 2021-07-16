@@ -31,6 +31,16 @@
     padding-top:5px;
 }
 
+.ProgressGoal{
+    display:flex;
+    background-color:#7cb209;
+    border-radius:4px;
+}
+.ProgressGoal .Progress{
+    padding: 5px 10px 0px 10px;
+    font-size:1.1rem
+}
+
 
 .Buttons{
     display:flex;
@@ -39,10 +49,11 @@
 .Status{
     padding-top:5px;
     background-color: tomato;
-    border-radius: 10px;
+    border-radius: 4px;
 
     text-align: center;
     font-weight: bold;
-    padding-left:5px;
-    padding-right:5px;
+    padding-left:10px;
+    padding-right:10px;
+    margin-right:2vw
 }

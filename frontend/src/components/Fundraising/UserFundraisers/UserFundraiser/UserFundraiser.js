@@ -29,6 +29,9 @@ class UserFundraiser extends Component{
                     <div className={classes.Title}>{this.props.props.titlu}</div>
                     <div className={classes.Description}>{this.props.props.descriereScurta}</div>
                 </div>
+                <div className={classes.ProgressGoal}>
+                        <div className={classes.Progress}><b>{this.props.props.progress} $</b> raised out of <b>{this.props.props.goal} $</b></div>
+                </div>
                 <div className={classes.Buttons}>
                     <div className={classes.ProgressBar}></div>
                     <div className={classes.Status}>{this.props.props.status}</div>

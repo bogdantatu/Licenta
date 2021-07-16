@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux';
+
 
 import { ProgressBar } from 'primereact/progressbar';
 import 'primereact/resources/themes/saga-blue/theme.css';
@@ -65,6 +67,9 @@ class FundraiserPage extends Component{
                     </div>
                     <div className={classes.Description}>
                         <div>
+                            <h4>{this.props.loggedUser.userName}</h4>
+                        </div>
+                        <div>
                             <h3>Description:</h3>
                             <p>{this.state.fundraiser.descriere}</p>
                         </div>
@@ -104,4 +109,8 @@ class FundraiserPage extends Component{
     }
 }
 
-export default withRouter(FundraiserPage);
+const mapStateToProps = ({user}) => ({
+    loggedUser: user.loggedUser
+  })
+  
+export default connect(mapStateToProps)(withRouter(FundraiserPage));

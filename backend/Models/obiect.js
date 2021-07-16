@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
            autoIncrement: true,
        },
        imagini: {
-           type: DataTypes.BLOB,
+           type: DataTypes.TEXT,
            allowNull: false,
        },
     });

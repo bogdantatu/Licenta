@@ -7,21 +7,21 @@ module.exports = (sequelize, DataTypes) => {
            autoIncrement: true,
        },
        titlu: {
-           type: DataTypes.STRING(50),
+           type: DataTypes.STRING,
            allowNull: false,
            validate: {
                len: [3,50]
            }
        },
        descriere: {
-           type: DataTypes.STRING(50),
+           type: DataTypes.STRING,
            allowNull: false,
            validate: {
                len: [1,300]
            }
        },
        dateContact: {
-           type: DataTypes.STRING(50),
+           type: DataTypes.STRING,
            allowNull: false,
            validate: {
                len: [3, 100]

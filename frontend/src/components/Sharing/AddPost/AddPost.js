@@ -16,7 +16,7 @@ class AddPost extends Component {
             title: "",
             description: "",
             contactData: "",
-            object: { "imagini": ""}
+            imagini: ""
         }
     }
   
@@ -25,10 +25,9 @@ class AddPost extends Component {
             titlu: this.state.title,
             descriere: this.state.description,
             dateContact: this.state.contactData,
-            Obiect: { "imagini": "unBlob"}
+            Obiect: {imagini: this.state.imagini}
         })
         .then(()=>this.props.history.replace('/sharing'))
-        .then(res => console.log(res))
         .catch(err => alert(err))
     }
 
@@ -38,7 +37,7 @@ class AddPost extends Component {
     
     changeHandler = (evt) => {
         this.setState({
-            [evt.target.name] : evt.target.value
+            [evt.target.name] : evt.target.value,
         })
     }
     render(){
@@ -86,6 +85,19 @@ class AddPost extends Component {
                         type="contactData"
                         name="contactData"
                         value={this.state.contactData}
+                        onChange={this.changeHandler}
+                        required/>
+                     <label>
+                        Imagine
+                    </label>    
+                    <TextField
+                        className={classes.Input}  
+                        id="outlined-basic" 
+                        label="Imagine" 
+                        variant="outlined" 
+                        type="imagini"
+                        name="imagini"
+                        value={this.state.imagini}
                         onChange={this.changeHandler}
                         required/>
                 </form>

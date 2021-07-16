@@ -21,7 +21,7 @@ const Utilizator = require('./utilizator')(sequelize, Sequelize)
 Anunt.belongsTo(Utilizator)
 Utilizator.hasMany(Anunt, {onDelete: 'CASCADE', hooks: true})
 Obiect.belongsTo(Anunt)
-Anunt.hasOne(Obiect)
+Anunt.hasOne(Obiect, {onDelete: 'CASCADE', hooks: true})
 Obiect.belongsTo(Utilizator)
 Utilizator.hasMany(Obiect, {onDelete: 'CASCADE', hooks: true})
 

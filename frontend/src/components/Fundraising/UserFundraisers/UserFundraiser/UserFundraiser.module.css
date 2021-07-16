@@ -19,6 +19,7 @@
 .userFundraiserDetails{
     display:flex;
     flex-direction: row;
+    width:30%
 }
 .Title{
     font-size: 1.3rem;
@@ -26,6 +27,8 @@
     margin-right:10px;
     padding-top:3px;
     margin-right:5vw;
+
+
 }
 .Description{
     font-size: 1.1rem;
@@ -51,10 +54,10 @@
     padding-top:5px;
     background-color: tomato;
     border-radius: 4px;
-
     text-align: center;
     font-weight: bold;
     padding-left:10px;
     padding-right:10px;
     margin-right:2vw
+
 }

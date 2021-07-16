@@ -6,10 +6,18 @@ import { withRouter } from 'react-router-dom'
 import { ProgressBar } from 'primereact/progressbar';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.css';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+
 import axios from "axios"
 
 import Button from '../../UI/Button/Button'
 import classes from './FundraiserPage.module.css';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 class FundraiserPage extends Component{
     constructor(props){
@@ -17,8 +25,8 @@ class FundraiserPage extends Component{
         this.state = {
             fundraiser: {},
             progress: 0,
-            donation: 0,
-            userName: ""
+            donation: "",
+            open: false
         }
         
     }
@@ -33,15 +41,6 @@ class FundraiserPage extends Component{
         .catch(err => console.log(err))
     }
 
-    // getUser = () => {
-    //     axios.get(`http://localhost:8080/utilizator/${this.state.fundraiser.utilizatorId}`)
-    //     .then(res => {
-    //         this.setState({
-    //             userName: res.data.userName
-    //         })
-    //     })
-    //     .catch(err => console.log(err))
-    // }
 
     donateHandler = () =>{
         let updatedFundraiser = this.state.fundraiser;
@@ -49,7 +48,8 @@ class FundraiserPage extends Component{
         updatedFundraiser.progress += +donation
         this.setState({
             fundraiser: updatedFundraiser,
-            progress: (updatedFundraiser.progress * 100 / updatedFundraiser.goal).toFixed(2)
+            progress: (updatedFundraiser.progress * 100 / updatedFundraiser.goal).toFixed(2),
+            open:true
         }, () => {
             axios.put(`http://localhost:8080/campanie/${this.state.fundraiser.id}`, {
                 progress: updatedFundraiser.progress
@@ -57,14 +57,22 @@ class FundraiserPage extends Component{
             .catch(err => console.log(err))
         })
         this.setState({
-            donation: 0
+            donation: "",
         })
     }
+
     changeHandler = (evt) => {
         this.setState({
             [evt.target.name] : evt.target.value
         })
     }
+    handleClose = () => {
+        this.setState({
+            open:false
+        })
+      };
+     
+    
     render(){
      
         return(
@@ -79,7 +87,7 @@ class FundraiserPage extends Component{
                     </div>
                     <div className={classes.Description}>
                         <div>
-                            <h4>{this.state.userName}</h4>
+                            <h4>{this.props.history.location.state}</h4>
                         </div>
                         <div>
                             <h3>Description:</h3>
@@ -115,7 +123,11 @@ class FundraiserPage extends Component{
                         </div>
                     </div>
                 </div>
-               
+               <Snackbar open={this.state.open} autoHideDuration={2000} onClose={this.handleClose}>
+                <Alert onClose={this.handleClose} severity="success">
+                    Thank you for your donation!
+                </Alert>
+            </Snackbar>
             </div>
         )
     }

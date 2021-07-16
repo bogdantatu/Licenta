@@ -19,16 +19,25 @@ class Profile extends Component{
     constructor(props){
         super(props)
         this.state = {
-            fundraisers: []
+            fundraisers: [],
+            nrOfFundraisers: 0
+
         }
     }
-    componentDidMount() {
+    getFundraisers = () => {
         axios.get(`http://localhost:8080/campanie`)
-            .then(res => {
-                this.setState({fundraisers: res.data})
+        .then(res => {
+            this.setState({
+                fundraisers: res.data,
+                nrOfFundraisers: res.data.length
             })
-            .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
     }
+    componentDidMount() {
+        this.getFundraisers()
+    }
+
     handleDeleteUser = () => {
         axios.delete(`http://localhost:8080/utilizator/${this.props.loggedUser.id}`)
         .then(firebase.auth().currentUser.delete())
@@ -38,7 +47,7 @@ class Profile extends Component{
     render(){
         const myFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.utilizatorId === this.props.loggedUser.id)
         const fundraisers = myFundraisers.map((fundraiser) => {
-            return <UserFundraiser key={fundraiser.id} props={fundraiser}/>
+            return <UserFundraiser key={fundraiser.id} props={fundraiser} get={this.getFundraisers}/>
         })
         return(
             <div className={classes.Profile}>

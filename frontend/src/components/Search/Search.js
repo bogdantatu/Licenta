@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import classes from './SearchFundraising.module.css';
+// import classes from './SearchFundraising.module.css';
 
-class SearchFundraising extends Component{
+class Search extends Component{
     constructor(props){
         super(props)
         this.state = { 
@@ -24,4 +24,4 @@ class SearchFundraising extends Component{
         )
     }
 }
-export default SearchFundraising;
+export default Search;

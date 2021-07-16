@@ -21,7 +21,8 @@ class Menu extends Component{
   handleChange = (evt) => {
       this.setState({
           keyword : evt.target.value
-      }, () => this.props.history.push(`/search/?filter=${this.state.keyword}`))
+      }, () => this.props.history.push(`/search/${this.state.keyword}`)
+    )
   }
     render(){
       return(

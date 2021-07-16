@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         imagini: {
-            type: DataTypes.BLOB,
+            type: DataTypes.TEXT,
             allowNull: true,
         },
         dateContact: {

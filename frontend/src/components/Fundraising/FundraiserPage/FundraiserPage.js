@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import {connect} from 'react-redux';
+
 
 
 import { ProgressBar } from 'primereact/progressbar';
@@ -17,8 +17,10 @@ class FundraiserPage extends Component{
         this.state = {
             fundraiser: {},
             progress: 0,
-            donation: 0
+            donation: 0,
+            userName: ""
         }
+        
     }
     componentDidMount(){
         axios.get(`http://localhost:8080/campanie/${this.props.match.params.id}`)
@@ -30,6 +32,16 @@ class FundraiserPage extends Component{
         })
         .catch(err => console.log(err))
     }
+
+    // getUser = () => {
+    //     axios.get(`http://localhost:8080/utilizator/${this.state.fundraiser.utilizatorId}`)
+    //     .then(res => {
+    //         this.setState({
+    //             userName: res.data.userName
+    //         })
+    //     })
+    //     .catch(err => console.log(err))
+    // }
 
     donateHandler = () =>{
         let updatedFundraiser = this.state.fundraiser;
@@ -54,7 +66,7 @@ class FundraiserPage extends Component{
         })
     }
     render(){
-       
+     
         return(
             <div className={classes.FundraiserPage}>
                 <div className={classes.TitleArea}>
@@ -63,11 +75,11 @@ class FundraiserPage extends Component{
                 </div>
                 <div className={classes.Details}>
                     <div>
-                        <img src="https://files.globalgiving.org/pfil/5871/pict_large.jpg?m=1278086819000" alt="imagine"></img>
+                        <img src={this.state.fundraiser.imagini} alt="imagine"></img>
                     </div>
                     <div className={classes.Description}>
                         <div>
-                            <h4>{this.props.loggedUser.userName}</h4>
+                            <h4>{this.state.userName}</h4>
                         </div>
                         <div>
                             <h3>Description:</h3>
@@ -109,8 +121,4 @@ class FundraiserPage extends Component{
     }
 }
 
-const mapStateToProps = ({user}) => ({
-    loggedUser: user.loggedUser
-  })
-  
-export default connect(mapStateToProps)(withRouter(FundraiserPage));
+export default withRouter(FundraiserPage);

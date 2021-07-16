@@ -52,7 +52,7 @@ class AddFundraiser extends Component {
                 <form className={classes.Form}>
                     <label>Campaign Image</label>
                     <input 
-                        type="file"
+                        type="url"
                         name="image"
                         value={this.state.image} 
                         onChange={this.changeHandler}

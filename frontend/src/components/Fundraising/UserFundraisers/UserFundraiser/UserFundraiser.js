@@ -24,7 +24,7 @@ class UserFundraiser extends Component{
     render(){
         return(
             <div className={classes.userFundraiser}>
-                <img src="https://files.globalgiving.org/pfil/5871/pict_large.jpg?m=1278086819000" alt="imagine"/>
+                <img src={this.props.props.imagini} alt="imagine"/>
                 <div className={classes.userFundraiserDetails}>
                     <div className={classes.Title}>{this.props.props.titlu}</div>
                     <div className={classes.Description}>{this.props.props.descriereScurta}</div>

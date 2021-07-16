@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     },
     imagineProfil: {
-        type: DataTypes.BLOB
+        type: DataTypes.TEXT
     },
     isModerator: {
         type: DataTypes.BOOLEAN,

@@ -14,8 +14,18 @@ class Fundraiser extends Component{
     constructor(props){
         super(props);
         this.state={
-            status: "CHECKING"
+            status: "CHECKING",
+            userName: ""
         }
+    }
+    componentDidMount(){
+        axios.get(`http://localhost:8080/utilizator/${this.props.props.utilizatorId}`)
+        .then(res => {
+            this.setState({
+                userName: res.data.userName
+            })
+        })
+        .catch(err => console.log(err))
     }
     handleChange = (evt) => {       
         this.setState({
@@ -36,7 +46,7 @@ class Fundraiser extends Component{
     
         return(
             <div className={classes.Fundraiser}>
-            <img src="" alt="imagine"/>
+            <img src={this.props.props.imagini} alt="imagine"/>
             <div className={classes.FundraiserDetails}>
                 <div className={classes.Title}>{this.props.props.titlu}</div>
                 <div className={classes.Description}>{this.props.props.descriereScurta}</div>
@@ -45,7 +55,7 @@ class Fundraiser extends Component{
                 <div className={classes.ProgressBar}></div>
                 {isModerator ?  
                     <div className={classes.ModeratorView}>
-                        <h4>{this.props.loggedUser.userName}</h4>
+                        <h4>{this.state.userName}</h4>
                         <select 
                             className={classes.statusSelect}
                             onChange={this.handleChange}>

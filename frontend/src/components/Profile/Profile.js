@@ -66,7 +66,9 @@ class Profile extends Component{
                          <Tabs>
                              <div  label="Your Fundraisers"> 
                                 <div className={classes.Fundraisers}>
-                                {fundraisers}
+                                    <ul>
+                                        {fundraisers}
+                                    </ul>
                                 </div>
                              </div>
                              <div label="Your Donations"> 

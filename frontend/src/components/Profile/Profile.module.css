@@ -67,6 +67,8 @@
 .ProfileRight .ProfileRightOptions .Fundraisers,
 .ProfileRight .ProfileRightOptions .Posts{
     margin: 1vw;
+    overflow-y:auto;
+    height: 42em;
 }
 .ProfileRight .ProfileRightOptions .Posts{
     display:flex;

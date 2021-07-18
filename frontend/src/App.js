@@ -21,6 +21,7 @@ import EditFundraiser from './components/Fundraising/FundraiserPage/EditFundrais
 import SharingList from './containers/Sharing/SharingList';
 import AddPost from './components/Sharing/AddPost/AddPost';
 import PostPage from './components/Sharing/PostPage/PostPage'
+import EditPost from './components/Sharing/EditPost/EditPost'
 import Search from './components/Search/Search';
 
 class App extends Component {
@@ -56,6 +57,7 @@ class App extends Component {
               <PrivateRoute component={SharingList} path="/sharing"  exact />
               <PrivateRoute component={AddPost} path="/addpost"  exact />
               <PrivateRoute component={PostPage} path ="/post/:id" exact />
+              <PrivateRoute component={EditPost} path ="/editpost/:id" exact/>
               <PrivateRoute component={ProfilePage} path="/profile" exact />
               <PrivateRoute component={Search} path="/search/:keyword" exact />
             </Layout>

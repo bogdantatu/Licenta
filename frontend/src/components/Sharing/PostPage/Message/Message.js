@@ -10,8 +10,9 @@ class Message extends Component {
         super(props)
         this.state = {
             userName: "",
-            ownerId: ""
+            ownerId: "",
         }
+
     }
     componentDidMount(){
         axios.get(`http://localhost:8080/utilizator/${this.props.props.utilizatorId}`)
@@ -40,7 +41,6 @@ class Message extends Component {
     
     handlePickWinner = () => {
         axios.put(`http://localhost:8080/anunt/${this.props.props.anuntId}/${this.props.props.utilizatorId}`)
-        .then(res => console.log(res.data))
         .catch(err => console.log(err))
     }
     render(){

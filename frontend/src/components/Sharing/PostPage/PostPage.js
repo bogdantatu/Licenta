@@ -37,13 +37,13 @@ class PostPage extends Component{
                 messages: res.data,
                 nrOfMessages: res.data.length
             })
-
         })
         .catch(err => console.log(err))
     }
 
     
     componentDidMount(){
+        this.getMessages()
         axios.get(`http://localhost:8080/anunt/${this.props.match.params.id}`)
         .then(res => {
             this.setState({
@@ -59,10 +59,6 @@ class PostPage extends Component{
             })
         })
         .catch(err => console.log(err))
-
-      this.getMessages()
-
-
     }
 
     changeHandler = (evt) => {
@@ -73,10 +69,12 @@ class PostPage extends Component{
     handleSend = () => {
         axios.post(`http://localhost:8080/mesaj/${this.props.loggedUser.id}/${this.props.match.params.id}`, {
             mesaj: this.state.message,
+        }).then(() => {
+            this.getMessages()
         })
         .then(this.setState({
             message: "",
-            open: true
+            open: true,
         }))
         .catch(err => console.log(err))
         
@@ -88,13 +86,16 @@ class PostPage extends Component{
       };
 
     render(){
-        axios.get(`http://localhost:8080/utilizator/${this.state.obiect.utilizatorId}`)
-        .then(res => this.setState({
-            userName: res.data.userName
-        }))
-        .catch(err=>console.log(err))
+            if(this.state.post.isClosed){
+                axios.get(`http://localhost:8080/utilizator/${this.state.obiect.utilizatorId}`)
+                .then(res => {this.setState({
+                    userName: res.data.userName
+                    })
+                })
+                .catch(err=>console.log(err))
+            }
         const messages = this.state.messages.map((message) => {
-            return <Message key={message.id} props={message} get={this.getMessages}/>
+            return <Message key={message.id} props={message} get={this.getMessages} postStatus={this.state.post.isClosed}/>
         })
         const myMessages  =this.state.messages.filter((message) => message.utilizatorId === this.props.loggedUser.id)
         const userMessages = myMessages.map((message) => {

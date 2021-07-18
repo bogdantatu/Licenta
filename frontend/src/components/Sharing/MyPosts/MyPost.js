@@ -5,7 +5,7 @@ import classes from './MyPost.module.css';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import { withRouter } from 'react-router';
 import axios from 'axios'
 
 
@@ -64,4 +64,4 @@ const mapStateToProps = ({user}) => ({
     loggedUser: user.loggedUser
   })
   
-export default connect(mapStateToProps)(MyPost);
+export default connect(mapStateToProps)(withRouter(MyPost));

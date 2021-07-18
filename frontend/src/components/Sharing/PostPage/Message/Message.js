@@ -21,14 +21,14 @@ class Message extends Component {
             })
         })
         .catch(err => console.log(err))
-
+        
         axios.get(`http://localhost:8080/anunt/${this.props.props.anuntId}`)
         .then(res => {
             this.setState({
                 ownerId: res.data.utilizatorId
-            })
         })
-        .catch(err => (console.log(err)))
+    })
+       .catch(err => console.log(err))
     }
 
     handleDelete = () =>{
@@ -37,19 +37,41 @@ class Message extends Component {
         .then(() => this.props.get())
         .catch(err => console.log(err))
     }
+    
+    handlePickWinner = () => {
+        axios.put(`http://localhost:8080/anunt/${this.props.props.anuntId}/${this.props.props.utilizatorId}`)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+    }
     render(){
         return( 
             <div className={classes.Message}>
-                <div className={classes.MessageBody}>{this.props.props.mesaj}</div>
-                {this.props.loggedUser.id === this.props.props.utilizatorId ? (
-                    <div className={classes.withButton}>
-                        <Button 
-                            btnType="DeleteMessage"
-                            clicked={this.handleDelete}>Delete</Button>
-                        <div className={classes.MessageUserWithButton}> ~ {this.state.userName}</div>
-                    </div>
-                ): <div className={classes.MessageUser}> ~ {this.state.userName}</div>}
-                
+                    {this.props.loggedUser.id === this.state.ownerId ? 
+                        (<div>
+                        <div className={classes.MessageBody}>{this.props.props.mesaj}</div>
+
+                        <div className={classes.withButton}>
+                            <Button 
+                                btnType="DeleteMessage"
+                                clicked={this.handleDelete}>Delete</Button>
+                            <Button
+                                btnType="PickWinner"
+                                clicked={this.handlePickWinner}>Pick winner</Button>
+                            <div className={classes.MessageUserWithButton}> ~ {this.state.userName}</div>
+                        </div>
+                        </div>)
+                    :  (<div>
+                    <div className={classes.MessageBody}>{this.props.props.mesaj}</div>
+                        {this.props.loggedUser.id === this.props.props.utilizatorId ? (
+                            <div className={classes.withButton}>
+                                <Button 
+                                    btnType="DeleteMessage"
+                                    clicked={this.handleDelete}>Delete</Button>
+                                <div className={classes.MessageUserWithButton}> ~ {this.state.userName}</div>
+                            </div>
+                        ): <div className={classes.MessageUser}> ~ {this.state.userName}</div>}
+                        </div>)
+                    }
             </div>
         )
     }

@@ -21,12 +21,14 @@ class PostPage extends Component{
         super(props)
         this.state ={
             post: {},
-            imagini:"",
+            obiect: {},
             message: "",
             open: false,
             messages:[],
-            nrOfMessages: 0
+            nrOfMessages: 0,
+            userName: []
         }
+
     }
     getMessages = () => {
         axios.get(`http://localhost:8080/mesaj/${this.props.match.params.id}`)
@@ -39,6 +41,8 @@ class PostPage extends Component{
         })
         .catch(err => console.log(err))
     }
+
+    
     componentDidMount(){
         axios.get(`http://localhost:8080/anunt/${this.props.match.params.id}`)
         .then(res => {
@@ -51,12 +55,14 @@ class PostPage extends Component{
         axios.get(`http://localhost:8080/obiect/${this.props.match.params.id}`)
         .then(res => {
             this.setState({
-                imagini: res.data.imagini,
+                obiect: res.data,
             })
         })
         .catch(err => console.log(err))
 
       this.getMessages()
+
+
     }
 
     changeHandler = (evt) => {
@@ -82,15 +88,24 @@ class PostPage extends Component{
       };
 
     render(){
+        axios.get(`http://localhost:8080/utilizator/${this.state.obiect.utilizatorId}`)
+        .then(res => this.setState({
+            userName: res.data.userName
+        }))
+        .catch(err=>console.log(err))
         const messages = this.state.messages.map((message) => {
             return <Message key={message.id} props={message} get={this.getMessages}/>
+        })
+        const myMessages  =this.state.messages.filter((message) => message.utilizatorId === this.props.loggedUser.id)
+        const userMessages = myMessages.map((message) => {
+            return <Message key={message.id} props={message} get={this.getMessages} />
         })
         return(
             <div className={classes.PostPage}>
                 <div className={classes.LeftArea}>
                     <div className={classes.Titlu}><h2>{this.state.post.titlu}</h2></div>
                     <div className={classes.Img}>
-                        <img src={this.state.imagini} alt=""></img>
+                        <img src={this.state.obiect.imagini} alt=""></img>
                     </div>
                     <div className={classes.Descriere}>
                         <p>{this.state.post.descriere}</p>
@@ -104,10 +119,13 @@ class PostPage extends Component{
                         <p>{this.state.post.isClosed ? "Closed" : "Active"}</p>
                     </div>
                 </div>
-                <div className={classes.RightArea}>
+                        {this.state.post.isClosed ? (
+                                            <div className={classes.RightAreaWinner}>
+                                                <p>This object has been donated to:   <b>{this.state.userName} </b></p> 
+                                            </div>) : (
+                    <div className={classes.RightArea}>
                     <div className={classes.RightTop}>
                         <div className={classes.MessageTitle}><h3>Let the user know that you want his object by sending him a message</h3></div>
-                        {this.state.post.isClosed ? "This object has been donated" : (
                             <div className={classes.MessageInput}>
                                 <div className={classes.MessageBody}>
                                     <textarea 
@@ -125,15 +143,16 @@ class PostPage extends Component{
                                             clicked={this.handleSend}>Send</Button>
                                     </div>
                             </div>
-                        )}
                     </div>
                     <div className={classes.RightBottom}>
                         <h3>Message List</h3>
                             <ul>
-                                {messages}
+                               {this.props.loggedUser.id === this.state.post.utilizatorId ? messages : userMessages} 
                             </ul>
                     </div>
-                </div>
+                    </div>
+                        )}
+
                 <Snackbar open={this.state.open} autoHideDuration={2000} onClose={this.handleClose}>
                 <Alert onClose={this.handleClose} severity="success">
                     Your message has been sent!

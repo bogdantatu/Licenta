@@ -117,3 +117,19 @@
     overflow-y: scroll;
     margin-top: 20px;
 }   
+
+.RightAreaWinner{
+    width: 50vw;
+    background-color: #D3D3D3;
+    max-height: 10vh;
+    display:flex;
+    flex-direction: column;
+    border-radius:4px;
+    padding:20px;
+}
+.RightAreaWinner p{
+    text-align:center;
+    font-size: 2rem;
+    justify-content: center;
+    align-content: center;
+}

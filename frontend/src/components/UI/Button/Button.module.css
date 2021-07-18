@@ -81,3 +81,13 @@
 .DeleteMessage:hover, .DeleteMessage:active{
     color:tomato;
 }
+
+.PickWinner{
+    background-color:#7cb209;
+    padding:0;
+    margin:0;
+    padding-top:5px;
+}
+.PickWinner:hover, .PickWinner:active{
+    color:black;
+}

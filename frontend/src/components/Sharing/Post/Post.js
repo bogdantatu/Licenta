@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
 import classes from './Post.module.css';
 import axios from 'axios'
+
 
 class Post extends Component{
     constructor(props){
@@ -28,9 +30,12 @@ class Post extends Component{
                     })
                     .catch(err => console.log(err))
     }
+    handleClick = () => {
+        this.props.history.push(`/post/${this.props.props.id}`)
+    }
     render(){
         return(
-        <div onClick={this.props.clicked} className={classes.Post}>
+        <div onClick={this.handleClick} className={classes.Post}>
             <div className={classes.Image}>
                 <img src={this.state.imagini} alt=""></img>
             </div>
@@ -48,4 +53,4 @@ class Post extends Component{
 } 
     
 
-export default Post;
+export default withRouter(Post);

@@ -39,7 +39,7 @@ class Fundraiser extends Component{
         })
     }
     handleViewMore = () => {
-        this.props.history.push(`/campanie/${this.props.props.id}`, this.state.userName)
+        this.props.history.push(`/fundraising/${this.props.props.id}`, this.state.userName)
     }
     render(){
         const isModerator = this.props.loggedUser.isModerator 

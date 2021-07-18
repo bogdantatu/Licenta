@@ -1,0 +1,71 @@
+.PostPage{
+    display: flex;
+    justify-content: space-around;
+}
+
+.LeftArea{
+    background-color: #D3D3D3;
+    border-radius: 4px;
+    /* height: 75vh; */
+    min-height: 60vh;
+    width: 25vw;
+    display:flex;
+    flex-direction: column;
+
+}
+.LeftArea .Titlu{
+    padding-left: 25px;
+    padding-top:10px;
+    border-bottom: 1px solid #4BA3C3;
+}
+
+.LeftArea .Img img,
+.LeftArea .Img{
+    width: 250px;
+    height: 28.153153153153152vh;
+    border-radius: 10px;
+}
+.LeftArea .Img{
+    align-self:center;
+    padding-top: 20px;
+}
+
+.LeftArea .Descriere{
+    margin-top: 35px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    width: 80%;
+    align-self: center;
+    word-wrap: break-word;
+}
+
+.LeftArea .DateContact{
+    padding-left:25px;
+    padding-top: 25px
+}
+.LeftArea .DateContact h4{
+    border-bottom: 1px solid #4BA3C3;
+    width: 40%
+}
+.LeftArea .DateContact p{
+    padding-top: 10px;
+    font-weight:bold;
+}
+
+.LeftArea .PostStatus{
+    display:flex;
+    flex-direction: row;
+    padding-left:25px;
+    margin-top: 30px;
+    border-top: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 10px
+}
+.LeftArea .PostStatus h4{
+    font-weight: normal;
+}
+.LeftArea .PostStatus p{
+    font-weight: bold;
+    margin-left: 10px
+}

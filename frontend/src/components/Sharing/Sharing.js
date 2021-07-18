@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Post from './Post/Post'
 
 import Button from '@material-ui/core/Button';
-
+import Icon from '../../assets/Images/sad-icon.png'
 import classes from './Sharing.module.css'
 import axios from 'axios';
 
@@ -25,7 +25,8 @@ class Sharing extends Component{
 
     }
     render(){
-        const posts = this.state.posts.map((post) => {
+        const posts = this.state.posts.filter((post) => !post.isClosed)
+        const activePosts = posts.map((post) => {
             return <Post key={post.id} props={post} />
         })
         return(
@@ -38,7 +39,7 @@ class Sharing extends Component{
                     </Button>
                 </div>
                 <div className={classes.SharingLayout}>
-                    {posts}
+                    {(activePosts.length  !== 0) ? activePosts : <div className={classes.NoPosts}><p>No posts available</p><img src={Icon} alt=""></img></div>}
                 </div>
             </div>
         )

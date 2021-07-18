@@ -25,3 +25,19 @@
 .btnAdd span{
     padding-top:5px !important;
 }
+
+.NoPosts{
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+}
+.NoPosts p{
+    font-size: 3rem;
+    margin-top: 25vh
+}
+.NoPosts img{
+    height: 100px;
+    width: 100px;
+    margin-left: 120px;
+}

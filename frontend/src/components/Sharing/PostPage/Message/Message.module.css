@@ -1,0 +1,28 @@
+.Message{
+
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius:4px;
+    padding:10px;
+    margin: 10px;
+}
+
+.Message .MessageUser{
+    text-align: right;
+    padding-top: 10px;
+}
+
+.Message .MessageBody{
+    background-color: #4BA3C3;
+    border-radius: 4px;
+    width:auto;
+    padding:10px;
+}
+
+.withButton{
+    padding-top:20px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -6,6 +6,7 @@ let router = express.Router();
  * Router for message endpoint
  */
 
+ router.get("/:id_anunt",controller.getMesajByAnuntID)
  router.get("/",controller.getMesaje)
  router.get("/:id",controller.getMesaj)
  router.post('/:id_utilizator/:id_anunt',controller.postMesaj)

@@ -61,3 +61,23 @@
 .DeleteAccount:hover, .Delete:active {
     color: white
 }
+
+.SendMessage{
+    background-color: #7cb209;
+    border-radius: 4px;
+    padding-top: 5px;
+    height:40px;
+}
+.SendMessage:hover, .SendMessage:active{
+    color: black
+}
+
+.DeleteMessage{
+    background-color:transparent;
+    color:black;
+    padding:0;
+    margin:0
+}
+.DeleteMessage:hover, .DeleteMessage:active{
+    color:tomato;
+}

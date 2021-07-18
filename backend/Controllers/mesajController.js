@@ -22,6 +22,28 @@ exports.getMesaje = async (req, res, next) => {
     }
 }
 
+exports.getMesajByAnuntID = async (req, res, next) => {
+    try {
+
+        const id_anunt = parseInt(req.params.id_anunt)
+        req.body.anuntId = id_anunt
+
+        if(isNaN(id_anunt)){
+            res.status(400).json({message: 'ID-ul trebuie sa fie numar'})
+        }
+        else{
+
+            const mesaj = await Models.Mesaj.findAll({ where: { anuntId: id_anunt } });
+            if(mesaj)
+            res.status(200).json(mesaj);
+            else{
+                res.status(404).json({message: 'Mesaleje nu au fost gasite'})
+            }
+        }
+    } catch (error) {
+        next(error);
+    }
+}
 /**
  * Function handling the GET request for one message
  *

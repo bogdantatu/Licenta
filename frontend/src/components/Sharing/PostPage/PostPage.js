@@ -1,35 +1,90 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
+
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import 'primereact/resources/primereact.css';
 
 import classes from './PostPage.module.css';
+import Button from '../../UI/Button/Button'
 import axios from 'axios'
+import Message from './Message/Message'
+
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 class PostPage extends Component{
     constructor(props){
         super(props)
         this.state ={
             post: {},
-            imagini:""
+            imagini:"",
+            message: "",
+            open: false,
+            messages:[],
+            nrOfMessages: 0
         }
     }
+    getMessages = () => {
+        axios.get(`http://localhost:8080/mesaj/${this.props.match.params.id}`)
+        .then(res => {
+            this.setState({
+                messages: res.data,
+                nrOfMessages: res.data.length
+            })
 
+        })
+        .catch(err => console.log(err))
+    }
     componentDidMount(){
         axios.get(`http://localhost:8080/anunt/${this.props.match.params.id}`)
         .then(res => {
             this.setState({
                 post: res.data,
             })
-            console.log(res.data)
         })
         .catch(err => console.log(err))
+
         axios.get(`http://localhost:8080/obiect/${this.props.match.params.id}`)
         .then(res => {
             this.setState({
-                imagini: res.data.imagini
+                imagini: res.data.imagini,
             })
         })
         .catch(err => console.log(err))
+
+      this.getMessages()
     }
+
+    changeHandler = (evt) => {
+        this.setState({
+            [evt.target.name]: evt.target.value
+        })
+    }
+    handleSend = () => {
+        axios.post(`http://localhost:8080/mesaj/${this.props.loggedUser.id}/${this.props.match.params.id}`, {
+            mesaj: this.state.message,
+        })
+        .then(this.setState({
+            message: "",
+            open: true
+        }))
+        .catch(err => console.log(err))
+        
+    }
+    handleClose = () => {
+        this.setState({
+            open:false
+        })
+      };
+
     render(){
+        const messages = this.state.messages.map((message) => {
+            return <Message key={message.id} props={message} get={this.getMessages}/>
+        })
         return(
             <div className={classes.PostPage}>
                 <div className={classes.LeftArea}>
@@ -51,22 +106,45 @@ class PostPage extends Component{
                 </div>
                 <div className={classes.RightArea}>
                     <div className={classes.RightTop}>
-                        <div className={classes.MessageTitle}>Let the owner know that you want his object</div>
-                        <div className={classes.MessageBody}>
-                            <input 
-                                type="text" />
-                        </div>
-                        <div className={classes.MessageButton}></div>
+                        <div className={classes.MessageTitle}><h3>Let the user know that you want his object by sending him a message</h3></div>
+                        {this.state.post.isClosed ? "This object has been donated" : (
+                            <div className={classes.MessageInput}>
+                                <div className={classes.MessageBody}>
+                                    <textarea 
+                                            type="text"
+                                            name="message"
+                                            placeholder="Your message"
+                                            rows="4"
+                                            value={this.state.message}
+                                            onChange={this.changeHandler} 
+                                            required/>
+                                    </div>
+                                    <div className={classes.MessageButton}>
+                                        <Button 
+                                            btnType="SendMessage"
+                                            clicked={this.handleSend}>Send</Button>
+                                    </div>
+                            </div>
+                        )}
                     </div>
                     <div className={classes.RightBottom}>
-                        <ul>
-
-                        </ul>
+                        <h3>Message List</h3>
+                            <ul>
+                                {messages}
+                            </ul>
                     </div>
                 </div>
+                <Snackbar open={this.state.open} autoHideDuration={2000} onClose={this.handleClose}>
+                <Alert onClose={this.handleClose} severity="success">
+                    Your message has been sent!
+                </Alert>
+            </Snackbar>
             </div>
         )
     }
 }
-
-export default PostPage;
+const mapStateToProps = ({user}) => ({
+    loggedUser: user.loggedUser
+  })
+  
+export default connect(mapStateToProps)(PostPage);

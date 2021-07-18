@@ -18,21 +18,59 @@ class AddFundraiser extends Component {
             description: "",
             contactData: "",
             goal: "",
-            image: ""
+            image: "",
+            errors: {}
         }
     }
-  
+    handleValidation(){;
+        let errors = {};
+        let formIsValid = true;
+        //Title
+        if(!this.state.title || this.state.title.length<3){
+            formIsValid = false;
+            errors["title"] = "Your title should have at least 3 characters"
+        }
+        //ShortDescription
+        if(!this.state.shortDescription) {
+           formIsValid = false;
+           errors["shortDescription"] = "You didn't enter a short description";
+        }
+         //Description
+         if(!this.state.description || this.state.description.length<10) {
+            formIsValid = false;
+            errors["description"] = "Your description should have at least 10 characters";
+         }
+           //ContactData
+           if(!this.state.contactData || this.state.title.contactData<3) {
+            formIsValid = false;
+            errors["contactData"] = "You didn't add any contact data";
+         }
+           //Goal
+           if(!this.state.description || !isNaN(this.state.title.description)) {
+            formIsValid = false;
+            errors["goal"] = "Your goal should be a number";
+         }
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
     addHandler = () => {
-        axios.post(`http://localhost:8080/campanie/${this.props.loggedUser.id}`, {
-            titlu: this.state.title,
-            descriereScurta: this.state.shortDescription,
-            descriere: this.state.description,
-            dateContact: this.state.contactData,
-            goal: this.state.goal,
-            imagini: this.state.image
-        })
-        .then(()=>this.props.history.replace('/fundraising'))
-        .catch(err => alert(err))
+        if(this.handleValidation()){
+            axios.post(`http://localhost:8080/campanie/${this.props.loggedUser.id}`, {
+                titlu: this.state.title,
+                descriereScurta: this.state.shortDescription,
+                descriere: this.state.description,
+                dateContact: this.state.contactData,
+                goal: this.state.goal,
+                imagini: this.state.image
+            })
+            .then(()=>this.props.history.replace('/fundraising'))
+            .catch(err => alert(err))
+        }
+        else{
+            alert("The form has errors")
+        }
+      
     }
 
     cancelHandler = () => {
@@ -70,6 +108,7 @@ class AddFundraiser extends Component {
                         value={this.state.title}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["title"]}</span>   
                     <label>
                         Short Description
                     </label>
@@ -83,6 +122,7 @@ class AddFundraiser extends Component {
                         value={this.state.shortDescription}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["shortDescription"]}</span>  
                     <label>
                         Fundraiser Description
                     </label>
@@ -98,6 +138,7 @@ class AddFundraiser extends Component {
                         value={this.state.description}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["description"]}</span>  
                     <label>
                         Contact data
                     </label>
@@ -111,6 +152,7 @@ class AddFundraiser extends Component {
                         value={this.state.contactData}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["contactData"]}</span>  
                     <label>
                         Goal
                     </label>
@@ -124,6 +166,7 @@ class AddFundraiser extends Component {
                         value={this.state.goal}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["goal"]}</span>  
                 </form>
                 <div className={classes.btnContainer}>
                  <Button

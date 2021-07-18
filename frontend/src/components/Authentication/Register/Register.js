@@ -19,13 +19,45 @@ class Register extends Component{
         this.state={
             username: "",
             email : "",
-            password : ""
+            password : "",
+            errors: {}
         }
     }
+
+    handleValidation(){;
+        let errors = {};
+        let formIsValid = true;
+        if(!this.state.username || this.state.username.length<2){
+            formIsValid = false;
+            errors["username"] = "Your username should have at least 2 characters"
+        }
+        //Email
+        if(!this.state.email) {
+           formIsValid = false;
+           errors["email"] = "You didn't enter your email";
+        }
+        if(typeof this.state.email !== "undefined"){
+            let lastAtPos = this.state.email.lastIndexOf('@');
+            let lastDotPos = this.state.email.lastIndexOf('.');
+
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && this.state.email.indexOf('@@') === -1 && lastDotPos > 2 && (this.state.email.length - lastDotPos) > 2)) {
+               formIsValid = false;
+               errors["email"] = "Email is not valid";
+             }
+        }  
+        //Password
+        if(!this.state.password ||this.state.password.length<6){
+           formIsValid = false;
+           errors["password"] = "Your password should have at least 6 characters!";
+        }
+       this.setState({errors: errors});
+       return formIsValid;
+   }
 
     registerHandler = (e) => {
         e.preventDefault()
         const { setLoggedUser } = this.props
+        if(this.handleValidation()){
             try {
                  firebase.auth()
                     .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -44,6 +76,9 @@ class Register extends Component{
                     })
             } catch (error) {
                 console.log(error)
+            }
+            }else{
+                alert("The form has errors")
             }
         }
 
@@ -70,21 +105,26 @@ class Register extends Component{
                             name="username"
                             placeholder="Username" 
                             value={this.state.username}
-                            onChange={this.changeHandler}/>        
+                            onChange={this.changeHandler}/>
+                            <span style={{color: "red"}}>{this.state.errors["username"]}</span>   
+   
                         <input 
                             className={classes.Input} 
                             type="email" 
                             name="email"
                             placeholder="Email" 
                             value={this.state.email}
-                            onChange={this.changeHandler}/>        
+                            onChange={this.changeHandler}/>
+                            <span style={{color: "red"}}>{this.state.errors["email"]}</span>   
                         <input 
                             className={classes.Input} 
                             type="password" 
                             name="password"
                             placeholder="Password" 
                             value={this.state.password}
-                            onChange={this.changeHandler}/>            
+                            onChange={this.changeHandler}/>  
+                            <span style={{color: "red"}}>{this.state.errors["password"]}</span>   
+          
                     <Button clicked={this.registerHandler}>Register</Button>
                     </form>
                     <div className={classes.Login}>

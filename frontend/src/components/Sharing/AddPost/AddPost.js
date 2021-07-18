@@ -16,11 +16,40 @@ class AddPost extends Component {
             title: "",
             description: "",
             contactData: "",
-            imagini: ""
+            imagini: "",
+            errors: {}
         }
     }
   
+    handleValidation(){;
+        let errors = {};
+        let formIsValid = true;
+        //Title
+        if(!this.state.title || this.state.title.length<3){
+            formIsValid = false;
+            errors["title"] = "Your title should have at least 3 characters"
+        }
+         //Description
+         if(!this.state.description || this.state.description.length<10) {
+            formIsValid = false;
+            errors["description"] = "Your description should have at least 10 characters";
+         }
+           //ContactData
+           if(!this.state.contactData || this.state.title.contactData<3) {
+            formIsValid = false;
+            errors["contactData"] = "You didn't add any contact data";
+         }
+          //ContactData
+          if(!this.state.imagini) {
+            formIsValid = false;
+            errors["imagini"] = "You didn't add a image ";
+         }
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
     addHandler = () => {
+        if(this.handleValidation()){
         axios.post(`http://localhost:8080/anunt/${this.props.loggedUser.id}`, {
             titlu: this.state.title,
             descriere: this.state.description,
@@ -29,6 +58,9 @@ class AddPost extends Component {
         })
         .then(()=>this.props.history.replace('/sharing'))
         .catch(err => alert(err))
+    }else{
+        alert("The form has errors!")
+    }
     }
 
     cancelHandler = () => {
@@ -59,6 +91,7 @@ class AddPost extends Component {
                         value={this.state.title}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["title"]}</span>
                     <label>
                         Object Description
                     </label>
@@ -74,6 +107,7 @@ class AddPost extends Component {
                         value={this.state.description}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["description"]}</span>
                     <label>
                         Contact data
                     </label>
@@ -87,6 +121,7 @@ class AddPost extends Component {
                         value={this.state.contactData}
                         onChange={this.changeHandler}
                         required/>
+                        <span style={{color: "red"}}>{this.state.errors["contactData"]}</span>
                      <label>
                         Imagine
                     </label>    
@@ -100,6 +135,7 @@ class AddPost extends Component {
                         value={this.state.imagini}
                         onChange={this.changeHandler}
                         required/>
+                         <span style={{color: "red"}}>{this.state.errors["imagini"]}</span>
                 </form>
                 <div className={classes.btnContainer}>
                  <Button

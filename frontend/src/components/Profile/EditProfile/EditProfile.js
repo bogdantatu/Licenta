@@ -15,10 +15,10 @@ class EditProfile extends Component{
         super(props)
         this.state = {
             userName: "",
-            email: "",
             nume: "",
             prenume: "",
             imagineProfil: "",
+            errors: {}
         }
 
     }
@@ -29,7 +29,6 @@ class EditProfile extends Component{
                 userName: res.data.userName,
                 nume: res.data.nume,
                 prenume: res.data.prenume,
-                email: res.data.email,
                 imagineProfil: res.data.imagineProfil
             })
         })
@@ -46,17 +45,41 @@ class EditProfile extends Component{
             [evt.target.name] : evt.target.value
         })
     }
+    handleValidation(){;
+        let errors = {};
+        let formIsValid = true;
+
+        if(!this.state.userName || this.state.userName.length<2){
+            formIsValid = false;
+            errors["userName"] = "Your username should have at least 2 characters"
+        }
+
+        if(!this.state.nume || this.state.nume.length<2){
+            formIsValid = false;
+            errors["nume"] = "Your surname should have at least 2 characters"
+        }
+        if(!this.state.prenume || this.state.prenume.length<2){
+            formIsValid = false;
+            errors["prenume"] = "Your first name should have at least 2 characters"
+        }
+       
+       this.setState({errors: errors});
+       return formIsValid;
+   }
     handleEdit = () => {
-        axios.put(`http://localhost:8080/utilizator/${this.props.loggedUser.id}`, {
-            userName: this.state.userName,
-            nume: this.state.nume,
-            prenume: this.state.prenume,
-            email: this.state.email,
-            imagineProfil: this.state.imagineProfil,
-        })
-        .then(this.props.history.replace('/profile'))
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
+        if(this.handleValidation()){
+            axios.put(`http://localhost:8080/utilizator/${this.props.loggedUser.id}`, {
+                userName: this.state.userName,
+                nume: this.state.nume,
+                prenume: this.state.prenume,
+                imagineProfil: this.state.imagineProfil,
+            })
+            .then(this.props.history.replace('/profile'))
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+        }else{
+            alert("The form has errors!")
+        }
     }
     render(){
         return(
@@ -85,6 +108,7 @@ class EditProfile extends Component{
                             value={this.state.userName}
                             onChange={this.changeHandler}
                             required/>
+                            <span style={{color: "red"}}>{this.state.errors["userName"]}</span>
                         <label>
                             Name
                         </label>
@@ -98,6 +122,7 @@ class EditProfile extends Component{
                             value={this.state.nume}
                             onChange={this.changeHandler}
                             required/>
+                            <span style={{color: "red"}}>{this.state.errors["nume"]}</span>
                         <label>
                             Prenume
                         </label>
@@ -112,19 +137,7 @@ class EditProfile extends Component{
                             value={this.state.prenume}
                             onChange={this.changeHandler}
                             required/>
-                        <label>
-                            Email
-                        </label>
-                        <TextField
-                            className={classes.Input}  
-                            id="outlined-basic" 
-                            label="Email" 
-                            variant="outlined" 
-                            type="email"
-                            name="email"
-                            value={this.state.email}
-                            onChange={this.changeHandler}
-                            required/>
+                            <span style={{color: "red"}}>{this.state.errors["prenume"]}</span>
                     </form>
                     <div className={classes.btnContainer}>
                     <Button

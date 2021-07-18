@@ -17,31 +17,62 @@ class Login extends Component{
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            errors: {}
         }
     }
     
     handleLogin = (e) => {
         e.preventDefault()
         const { setLoggedUser } = this.props
-        try {
-            firebase.auth()
-                .signInWithEmailAndPassword(this.state.email, this.state.password)
-                .then(() => {
-                    axios.get(`http://localhost:8080/utilizator/email/?filter=${this.state.email}`)
-                                .then(res => {
-                                  setLoggedUser(res.data)
-                                 
-                                })
-                                .catch(err => {
-                                  alert(err)
-                                })
-                                this.props.history.replace('/fundraising')
-                })
-        } catch (error) {
-            console.log(error)
+        if(this.handleValidation()){
+            try {
+                firebase.auth()
+                    .signInWithEmailAndPassword(this.state.email, this.state.password)
+                    .then(() => {
+                        axios.get(`http://localhost:8080/utilizator/email/?filter=${this.state.email}`)
+                                    .then(res => {
+                                      setLoggedUser(res.data)
+                                     
+                                    })
+                                    .catch(err => {
+                                      alert(err)
+                                    })
+                                    this.props.history.replace('/fundraising')
+                    })
+            } catch (error) {
+                console.log(error)
+            }
+        }else{
+            alert("The form has errors")
         }
+      
     }
+    handleValidation(){;
+        let errors = {};
+        let formIsValid = true;
+        //Email
+        if(!this.state.email) {
+           formIsValid = false;
+           errors["email"] = "You didn't enter your email";
+        }
+        if(typeof this.state.email !== "undefined"){
+            let lastAtPos = this.state.email.lastIndexOf('@');
+            let lastDotPos = this.state.email.lastIndexOf('.');
+
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && this.state.email.indexOf('@@') === -1 && lastDotPos > 2 && (this.state.email.length - lastDotPos) > 2)) {
+               formIsValid = false;
+               errors["email"] = "Email is not valid";
+             }
+        }  
+        //Password
+        if(!this.state.password ||this.state.password.length<6){
+           formIsValid = false;
+           errors["password"] = "Your password should have at least 6 characters!";
+        }
+       this.setState({errors: errors});
+       return formIsValid;
+   }
 
     switchRegisterHandler = () => {
         this.props.history.replace('/register')
@@ -72,7 +103,8 @@ class Login extends Component{
                                 value={this.state.email}
                                 placeholder="Email"
                                 onChange={this.changeHandler}
-                                required/>        
+                                required/> 
+                                <span style={{color: "red"}}>{this.state.errors["email"]}</span>   
                             <input 
                                 className={classes.Input} 
                                 type="password" 
@@ -80,7 +112,8 @@ class Login extends Component{
                                 value={this.state.password}
                                 placeholder="Password"
                                 onChange={this.changeHandler}
-                                required/>            
+                                required/> 
+                                <span style={{color: "red"}}>{this.state.errors["password"]}</span>       
                         <Button
                             clicked={this.handleLogin}>Login</Button>
                         </form>

@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 500]
+                len: [10, 500]
             }
         },
         imagini: {

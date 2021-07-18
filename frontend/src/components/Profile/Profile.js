@@ -95,9 +95,9 @@ class Profile extends Component{
                  <div className={classes.ProfileDetails}>
                      <p>Email:</p>
                      <h3>{this.state.email}</h3>
-                     <p>Nume:</p>
+                     <p>Surname:</p>
                      <h3>{this.state.nume}</h3>
-                     <p>Prenume:</p>
+                     <p>First name:</p>
                      <h3>{this.state.prenume}</h3>
                  </div>
                  <div className={classes.ProfileOptions}>

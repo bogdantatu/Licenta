@@ -118,9 +118,9 @@ class FundraiserPage extends Component{
                                 btnType="Donate"
                                 clicked={this.donateHandler}><span>Donate</span></Button>
                         </div>
-                        <div className={classes.btnShare}>
+                        {/* <div className={classes.btnShare}>
                             <Button btnType="Share"><span>Share</span></Button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                <Snackbar open={this.state.open} autoHideDuration={2000} onClose={this.handleClose}>

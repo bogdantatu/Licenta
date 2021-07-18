@@ -36,11 +36,13 @@ class MyPost extends Component{
         .then(() => this.props.get())
         .catch(err => console.log(err))
     }
-
+    handleClick = () => {
+        this.props.history.push(`/post/${this.props.props.id}`)
+    }
     render(){
         return(
-            <div onClick={this.props.clicked} className={classes.Post}>
-                <div className={classes.Image}>
+            <div className={classes.Post}>
+                <div onClick={this.handleClick} className={classes.Image}>
                     <img src={this.state.imagini} alt=""></img>
                 </div>
                 <div className={classes.Details}>

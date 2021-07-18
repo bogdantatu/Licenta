@@ -81,7 +81,6 @@ class Login extends Component{
                                 placeholder="Password"
                                 onChange={this.changeHandler}
                                 required/>            
-                        <p>Did you forgot your password?</p>
                         <Button
                             clicked={this.handleLogin}>Login</Button>
                         </form>

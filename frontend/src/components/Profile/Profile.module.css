@@ -40,7 +40,7 @@
 }
 .ProfileLeft .ProfileDetails h3{
     padding-left:20px;
-    font-size: 1.2vw
+    font-size: 1.1rem
 }
 .ProfileLeft .ProfileDetails p{
     font-size:1vw
@@ -65,9 +65,8 @@
 }
 
 .ProfileRight .ProfileRightOptions .Fundraisers{
-    margin: 1vw;
+
     overflow-y:auto;
-    height: 42em;
 }
 
 .ProfileRight .ProfileRightOptions .Posts{

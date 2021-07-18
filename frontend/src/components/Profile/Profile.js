@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-
 import classes from './Profile.module.css';
 
 import Button from '../UI/Button/Button'
 import Tabs from "../UI/Tabs//Tabs"; 
+import { withRouter } from 'react-router';
 
 import MyPost from '../Sharing/MyPosts/MyPost'
 import UserFundraiser from '../Fundraising/UserFundraisers/UserFundraiser/UserFundraiser'
@@ -22,7 +22,12 @@ class Profile extends Component{
             fundraisers: [],
             nrOfFundraisers: 0,
             posts: [],
-            nrOfPosts: 0
+            nrOfPosts: 0,
+            imagineProfil: "",
+            userName: "",
+            nume: "",
+            prenume: "",
+            email: ""
         }
     }
     getFundraisers = () => {
@@ -48,6 +53,17 @@ class Profile extends Component{
     componentDidMount() {
         this.getFundraisers()
         this.getPosts()
+        axios.get(`http://localhost:8080/utilizator/${this.props.loggedUser.id}`)
+        .then(res => {
+            this.setState({
+                imagineProfil: res.data.imagineProfil,
+                userName: res.data.userName,
+                nume: res.data.nume,
+                prenume: res.data.prenume,
+                email: res.data.email
+            })
+        })
+        .catch(err=> console.log(err))
     }
 
     handleDeleteUser = () => {
@@ -56,31 +72,36 @@ class Profile extends Component{
         .then(res => console.log(res.data))
         .catch(err => console.log(err))
     }
+    handleEdit = () => {
+        this.props.history.push(`/editprofile/${this.props.loggedUser.id}`)
+    }    
+
     render(){
         const myFundraisers = this.state.fundraisers.filter((fundraiser) => fundraiser.utilizatorId === this.props.loggedUser.id)
         const fundraisers = myFundraisers.map((fundraiser) => {
             return <UserFundraiser key={fundraiser.id} props={fundraiser} get={this.getFundraisers}/>
         })
-        const posts = this.state.posts.map((post) => {
+        const posts = this.state.posts.filter((post) => post.utilizatorId === this.props.loggedUser.id)
+        const myPosts = posts.map((post) => {
             return <MyPost key={post.id} props={post} get={this.getPosts}/>
         })
         return(
             <div className={classes.Profile}>
             <div className={classes.ProfileLeft}>
                  <div className={classes.ProfilePhoto}>
-                     <img src="https://resizing.flixster.com/pF4wUsB6SS4aaUdLBdXz1d2cF0I=/506x652/v2/https://flxt.tmsimg.com/v9/AllPhotos/45497/45497_v9_bb.jpg" alt=""></img>
-                     <h2>{this.props.loggedUser.userName}</h2>
+                     <img src={this.state.imagineProfil} alt=""></img>
+                     <h2>{this.state.userName}</h2>
                  </div>
                  <div className={classes.ProfileDetails}>
                      <p>Email:</p>
-                     <h3>{this.props.loggedUser.email}</h3>
+                     <h3>{this.state.email}</h3>
                      <p>Nume:</p>
-                     <h3>{this.props.loggedUser.nume}</h3>
+                     <h3>{this.state.nume}</h3>
                      <p>Prenume:</p>
-                     <h3>{this.props.loggedUser.prenume}</h3>
+                     <h3>{this.state.prenume}</h3>
                  </div>
                  <div className={classes.ProfileOptions}>
-                     <Button btnType="ChangePass">Change your password</Button>
+                     <Button btnType="ChangePass" clicked={this.handleEdit}>Edit your Profile</Button>
                      <Button btnType="SignOut" clicked={() => firebase.auth().signOut()}>Sign out</Button>
                      <Button btnType="DeleteAccount" clicked={this.handleDeleteUser}><span>Delete your account</span></Button>
                  </div>
@@ -97,7 +118,7 @@ class Profile extends Component{
                              </div>
                              <div label="Your Donations"> 
                                 <div className={classes.Posts}>
-                                    {posts}
+                                    {myPosts}
                                 </div>
                              </div>
                          </Tabs>
@@ -112,4 +133,4 @@ const mapStateToProps = ({user}) => ({
     loggedUser: user.loggedUser
   })
   
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(withRouter(Profile));

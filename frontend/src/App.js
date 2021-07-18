@@ -14,6 +14,7 @@ import Login from './components/Authentication/Login/Login';
 import Register from './components/Authentication/Register/Register';
 import FundraisingList from './containers/Fundraising/FundraisingList'
 import ProfilePage from './containers/Profile/ProfilePage'
+import EditProfile from './components/Profile/EditProfile/EditProfile'
 import AddFundraiser from './components/Fundraising/AddFundraiser/AddFundraiser'
 import FundraiserPage from './components/Fundraising/FundraiserPage/FundraiserPage';
 import UserFundraisers from './components/Fundraising/UserFundraisers/UserFundraisers'
@@ -59,6 +60,7 @@ class App extends Component {
               <PrivateRoute component={PostPage} path ="/post/:id" exact />
               <PrivateRoute component={EditPost} path ="/editpost/:id" exact/>
               <PrivateRoute component={ProfilePage} path="/profile" exact />
+              <PrivateRoute component={EditProfile} path="/editprofile/:id" />
               <PrivateRoute component={Search} path="/search/:keyword" exact />
             </Layout>
           </Switch>

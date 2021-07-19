@@ -26,7 +26,8 @@ class PostPage extends Component{
             open: false,
             messages:[],
             nrOfMessages: 0,
-            userName: []
+            userName: [],
+            errors:{}
         }
 
     }
@@ -60,13 +61,14 @@ class PostPage extends Component{
         })
         .catch(err => console.log(err))
     }
-
+    
     changeHandler = (evt) => {
         this.setState({
             [evt.target.name]: evt.target.value
         })
     }
     handleSend = () => {
+        if(this.handleValidation()){
         axios.post(`http://localhost:8080/mesaj/${this.props.loggedUser.id}/${this.props.match.params.id}`, {
             mesaj: this.state.message,
         }).then(() => {
@@ -77,6 +79,9 @@ class PostPage extends Component{
             open: true,
         }))
         .catch(err => console.log(err))
+    }else{
+        alert("Your message has errors!")
+    }
         
     }
     handleClose = () => {
@@ -84,6 +89,18 @@ class PostPage extends Component{
             open:false
         })
       };
+      handleValidation(){;
+        let errors = {};
+        let formIsValid = true;
+
+        if(!this.state.message || this.state.message.length<10){
+            formIsValid = false;
+            errors["message"] = "Your message should have at least 3 characters"
+        }
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
 
     render(){
             if(this.state.post.isClosed){
@@ -136,7 +153,8 @@ class PostPage extends Component{
                                             rows="4"
                                             value={this.state.message}
                                             onChange={this.changeHandler} 
-                                            required/>
+                                            required/> 
+                                            <span style={{color: "red"}}>{this.state.errors["message"]}</span>
                                     </div>
                                     <div className={classes.MessageButton}>
                                         <Button 

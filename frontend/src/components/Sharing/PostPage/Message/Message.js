@@ -10,9 +10,9 @@ class Message extends Component {
         super(props)
         this.state = {
             userName: "",
-            ownerId: "",
+            ownerId: ""
         }
-
+    
     }
     componentDidMount(){
         axios.get(`http://localhost:8080/utilizator/${this.props.props.utilizatorId}`)
@@ -26,9 +26,10 @@ class Message extends Component {
         axios.get(`http://localhost:8080/anunt/${this.props.props.anuntId}`)
         .then(res => {
             this.setState({
-                ownerId: res.data.utilizatorId
+                ownerId: res.data.utilizatorId,
         })
     })
+
        .catch(err => console.log(err))
     }
 
@@ -41,8 +42,12 @@ class Message extends Component {
     
     handlePickWinner = () => {
         axios.put(`http://localhost:8080/anunt/${this.props.props.anuntId}/${this.props.props.utilizatorId}`)
+        .then(() => {
+            alert("Congratulations! You donated your object!")
+        })
         .catch(err => console.log(err))
     }
+  
     render(){
         return( 
             <div className={classes.Message}>

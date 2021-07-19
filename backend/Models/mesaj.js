@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
            autoIncrement: true,
        },
        mesaj:{
-           type: DataTypes.STRING(50),
+           type: DataTypes.STRING,
            allowNull: false,
            validate: {
                len:[10, 300]
